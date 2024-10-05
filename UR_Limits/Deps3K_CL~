@@ -1,0 +1,121 @@
+{
+	"cell_id": 6361048857222858630,
+	"cells": [
+		{
+			"cell_id": 13418609622078894464,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"source": "def post_process(ex):\n\tsort_product(ex)\n\tcanonicalise(ex)\n\tcollect_terms(ex)"
+		},
+		{
+			"cell_id": 17510422993473036324,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 5338189733730352831,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Coordinate attached to~}\\left[u,~\\discretionary{}{}{} \\epsilon\\right].\\end{dmath*}"
+				},
+				{
+					"cell_id": 12869879518683504737,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Indices(position=independent) attached to~}\\left[a,~\\discretionary{}{}{} b,~\\discretionary{}{}{} c,~\\discretionary{}{}{} d,~\\discretionary{}{}{} e,~\\discretionary{}{}{} f,~\\discretionary{}{}{} g,~\\discretionary{}{}{} h\\#\\right].\\end{dmath*}"
+				},
+				{
+					"cell_id": 3521226053242132786,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Indices(position=independent) attached to~}\\left[a',~\\discretionary{}{}{} b',~\\discretionary{}{}{} c',~\\discretionary{}{}{} d',~\\discretionary{}{}{} e',~\\discretionary{}{}{} f',~\\discretionary{}{}{} g',~\\discretionary{}{}{} h'\\#\\right].\\end{dmath*}"
+				},
+				{
+					"cell_id": 8062853753369493908,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Indices(position=independent) attached to~}\\left[i,~\\discretionary{}{}{} j,~\\discretionary{}{}{} k,~\\discretionary{}{}{} l\\#\\right].\\end{dmath*}"
+				},
+				{
+					"cell_id": 4579750788947393746,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property TableauSymmetry attached to~}R_{a b c d}.\\end{dmath*}"
+				}
+			],
+			"source": "{u, \\epsilon}::Coordinate;\n{a,b,c,d,e,f,g,h#}::Indices(vector, position=independent);\n{a', b', c', d', e', f', g', h'#}::Indices(vector, position=independent);\n{i, j, k, l#}::Indices(twoD, position=independent);\nR_{a b c d}::RiemannTensor;"
+		},
+		{
+			"cell_id": 9933809251407083675,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 14880771528619444523,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Derivative attached to~}\\nabla{\\#}.\\end{dmath*}"
+				},
+				{
+					"cell_id": 14958500367959401214,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property SatisfiesBianchi attached to~}\\nabla_{e}{R_{a b c d}}.\\end{dmath*}"
+				},
+				{
+					"cell_id": 596744279546409722,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property PartialDerivative attached to~}\\partial{\\#}.\\end{dmath*}"
+				},
+				{
+					"cell_id": 4011335214126849400,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property KroneckerDelta attached to~}\\delta_{a b}.\\end{dmath*}"
+				}
+			],
+			"source": "\\nabla{#}::Derivative;\n\\nabla_{e}{ R_{a b c d} }::SatisfiesBianchi;\n\\partial{#}::PartialDerivative;\n\\delta_{a b}::KroneckerDelta;"
+		},
+		{
+			"cell_id": 17782925104844722934,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 15427813230364801298,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Depends attached to~}U.\\end{dmath*}"
+				},
+				{
+					"cell_id": 14365650822491932253,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Depends attached to~}V.\\end{dmath*}"
+				},
+				{
+					"cell_id": 18074868273230832142,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Depends attached to~}X^{i}.\\end{dmath*}"
+				}
+			],
+			"source": "U::Depends(u, \\epsilon);\nV::Depends(u, \\epsilon);\nX^i::Depends(u, \\epsilon);"
+		},
+		{
+			"cell_id": 13041247839012733674,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"source": "Deps3K := K^{a'}_{b;cde} \\dot{z}^{c} \\dot{z}^{d} \\dot{z}^{e} (\\partial_{\\epsilon}{U})^3\n+ 3K^{a'}_{b;cde'} \\dot{z}^{c} \\dot{z}^{d} \\xi^{e'} (\\partial_{\\epsilon}{U})^2;"
+		},
+		{
+			"cell_id": 16864876130672700518,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"source": ""
+		}
+	],
+	"description": "Cadabra JSON notebook format",
+	"version": 1.0
+}

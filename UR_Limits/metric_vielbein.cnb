@@ -1,0 +1,79 @@
+{
+	"cell_id": 4431926747044172974,
+	"cells": [
+		{
+			"cell_id": 1052778008704210123,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 7799445288529869252,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Indices(position=fixed) attached to~}\\left[a,~\\discretionary{}{}{} b,~\\discretionary{}{}{} c,~\\discretionary{}{}{} d,~\\discretionary{}{}{} f\\right].\\end{dmath*}"
+				},
+				{
+					"cell_id": 17983443091231932183,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Indices(position=fixed) attached to~}\\left[i,~\\discretionary{}{}{} j,~\\discretionary{}{}{} k,~\\discretionary{}{}{} l,~\\discretionary{}{}{} m,~\\discretionary{}{}{} n,~\\discretionary{}{}{} p,~\\discretionary{}{}{} q\\#\\right].\\end{dmath*}"
+				},
+				{
+					"cell_id": 13485121255135319536,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Coordinate attached to~}x.\\end{dmath*}"
+				},
+				{
+					"cell_id": 316010955616229445,
+					"cell_origin": "server",
+					"cell_type": "error",
+					"source": "{\\color{red}{\\begin{verbatim}RuntimeError: Object already has an Indices property attached to it.\n\nAt:\n  Notebook Cell (Line 4): __cdbtmp__ = Coordinate(Ex(r'''s'''), Ex(r'')); display(__cdbtmp__)\n\\end{verbatim}}}"
+				}
+			],
+			"source": "{a,b,c,d,f}::Indices(curved, position=fixed);\n{i,j,k,l,m,n,p,q#}::Indices(flat, position=fixed);\nx::Coordinate;\ns::Coordinate;\n\\partial{#}::PartialDerivative;\n\\nabla{#}::Derivative;"
+		},
+		{
+			"cell_id": 14058056091550446610,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 9553041017865600642,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property TableauSymmetry attached to~}R_{a b c d}.\\end{dmath*}"
+				},
+				{
+					"cell_id": 1698170382636658122,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Depends attached to~}R_{a b c d}.\\end{dmath*}"
+				}
+			],
+			"source": "R_{a b c d}::RiemannTensor;\nR_{a b c d}::Depends(x);"
+		},
+		{
+			"cell_id": 10637484034078897934,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 17506424586445847685,
+					"cell_origin": "server",
+					"cell_type": "error",
+					"source": "{\\color{red}{\\begin{verbatim}RuntimeError: Depends: \\lambda lacks property Coordinate, Derivative, Accent or Indices.\nIn 2.x, make sure to write dependence on a derivative\nas A::Depends(\\partial{#}), note the '{#}'.\n\nAt:\n  Notebook Cell (Line 1): __cdbtmp__ = Depends(Ex(r'''Y^{a}'''), Ex(r'''s, \\lambda''') ); display(__cdbtmp__)\n\\end{verbatim}}}"
+				}
+			],
+			"source": "Y^{a}::Depends(s, \\lambda);"
+		},
+		{
+			"cell_id": 13651405735862469114,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"source": ""
+		}
+	],
+	"description": "Cadabra JSON notebook format",
+	"version": 1.0
+}

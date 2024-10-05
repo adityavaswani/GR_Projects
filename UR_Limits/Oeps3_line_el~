@@ -1,0 +1,2551 @@
+{
+	"cell_id": 3036746111034188567,
+	"cells": [
+		{
+			"cell_id": 273593362221381982,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"source": "def post_process(ex):\n\tsort_product(ex)\n\tcanonicalise(ex)\n\tcollect_terms(ex)"
+		},
+		{
+			"cell_id": 17574430644451167761,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 17808461637949558328,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Coordinate attached to~}\\left[s,~\\discretionary{}{}{} \\epsilon\\right].\\end{dmath*}"
+				},
+				{
+					"cell_id": 8780181534096387585,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Indices(position=independent) attached to~}\\left[a,~\\discretionary{}{}{} b,~\\discretionary{}{}{} c,~\\discretionary{}{}{} d,~\\discretionary{}{}{} e,~\\discretionary{}{}{} f,~\\discretionary{}{}{} g,~\\discretionary{}{}{} h\\#\\right].\\end{dmath*}"
+				},
+				{
+					"cell_id": 13510422382404671945,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Indices(position=independent) attached to~}\\left[a',~\\discretionary{}{}{} b',~\\discretionary{}{}{} c',~\\discretionary{}{}{} d',~\\discretionary{}{}{} e',~\\discretionary{}{}{} f',~\\discretionary{}{}{} g',~\\discretionary{}{}{} h'\\#\\right].\\end{dmath*}"
+				},
+				{
+					"cell_id": 6780969245819801775,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Indices(position=independent) attached to~}\\left[i,~\\discretionary{}{}{} j,~\\discretionary{}{}{} k,~\\discretionary{}{}{} l\\#\\right].\\end{dmath*}"
+				},
+				{
+					"cell_id": 6699157482153343947,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property TableauSymmetry attached to~}R_{a b c d}.\\end{dmath*}"
+				}
+			],
+			"source": "{s, \\epsilon}::Coordinate;\n{a,b,c,d,e,f,g,h#}::Indices(vector, position=independent);\n{a', b', c', d', e', f', g', h'#}::Indices(vector, position=independent);\n{i, j, k, l#}::Indices(twoD, position=independent);\nR_{a b c d}::RiemannTensor;"
+		},
+		{
+			"cell_id": 5155617899736136820,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 5323604448465904754,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Derivative attached to~}\\nabla{\\#}.\\end{dmath*}"
+				},
+				{
+					"cell_id": 17318441789676221952,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property SatisfiesBianchi attached to~}\\nabla_{e}{R_{a b c d}}.\\end{dmath*}"
+				},
+				{
+					"cell_id": 17371576974592694475,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property PartialDerivative attached to~}\\partial{\\#}.\\end{dmath*}"
+				},
+				{
+					"cell_id": 12176922713214217799,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property KroneckerDelta attached to~}\\delta_{a b}.\\end{dmath*}"
+				},
+				{
+					"cell_id": 144965394669106640,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property SatisfiesBianchi attached to~}\\nabla_{e}{R_{a b c d}}.\\end{dmath*}"
+				}
+			],
+			"source": "\\nabla{#}::Derivative;\n\\nabla_{e}{ R_{a b c d} }::SatisfiesBianchi;\n\\partial{#}::PartialDerivative;\n\\delta_{a b}::KroneckerDelta;\n\\nabla_{e}{ R_{a b c d} }::SatisfiesBianchi;"
+		},
+		{
+			"cell_id": 4284204414757037651,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 17379302024576462233,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Depends attached to~}U.\\end{dmath*}"
+				},
+				{
+					"cell_id": 3427167355299828786,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Depends attached to~}V.\\end{dmath*}"
+				},
+				{
+					"cell_id": 6962544706759453790,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Depends attached to~}X^{i}.\\end{dmath*}"
+				}
+			],
+			"source": "U::Depends(s, \\epsilon);\nV::Depends(s, \\epsilon);\nX^i::Depends(s, \\epsilon);"
+		},
+		{
+			"cell_id": 8481900995377336917,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 9292719118731493666,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Depends attached to~}K_{a' b}.\\end{dmath*}"
+				},
+				{
+					"cell_id": 11164311287602973018,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Depends attached to~}H_{a' b}.\\end{dmath*}"
+				},
+				{
+					"cell_id": 6433611122648431339,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Depends attached to~}\\xi^{a'}.\\end{dmath*}"
+				}
+			],
+			"source": "K_{a' b}::Depends(s, \\epsilon);\nH_{a' b}::Depends(s, \\epsilon);\n\\xi^{a'}::Depends(s, \\epsilon);"
+		},
+		{
+			"cell_id": 8701625221316074135,
+			"cell_origin": "client",
+			"cell_type": "latex",
+			"cells": [
+				{
+					"cell_id": 17031459403476443777,
+					"cell_origin": "client",
+					"cell_type": "latex_view",
+					"source": "To evaluate the contribution to the line element at $\\mathcal{O} (\\epsilon^3)$, we first need\nto compute the coincidence limit $[D^{3}_{\\epsilon} K_{a' b}]$. A quick check shows that\nthis is the sum of 9 terms T1-T9 below. So we proceed to evaluate these 9 terms and simplify\ntheir sum."
+				}
+			],
+			"source": "To evaluate the contribution to the line element at $\\mathcal{O} (\\epsilon^3)$, we first need\nto compute the coincidence limit $[D^{3}_{\\epsilon} K_{a' b}]$. A quick check shows that\nthis is the sum of 9 terms T1-T9 below. So we proceed to evaluate these 9 terms and simplify\ntheir sum."
+		},
+		{
+			"cell_id": 2543730458563318106,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 3894572787574120117,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 17197892565022355257,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\dot(z)^{c} \\dot(z)^{d} \\dot(z)^{e} \\nabla_{c d e}(K_{a' b}) \\partial_{\\epsilon}(U_{0})^{3}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\dot{z}\\,^{e} \\nabla_{c d e}{K_{a' b}} \\partial_{\\epsilon}{U_{0}}\\,^{3}\\end{dmath*}"
+				}
+			],
+			"source": "T1 := \\nabla_{e d c}{K_{a' b}} \\dot{z}^{c} \\dot{z}^{d} \\dot{z}^{e}\n\\partial_{\\epsilon}{U_{0}}^3;"
+		},
+		{
+			"cell_id": 9244503825147421211,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 2796115592805426351,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 7420906863225460266,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\nabla_{e d c}(K_{a' b}) ->  -  1/3 \\nabla_{b}(R_{a e c d}) -  1/3 \\nabla_{b}(R_{a d c e})-\\nabla_{d}(R_{a e b c})-\\nabla_{e}(R_{a d b c})"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\nabla_{e d c}{K_{a' b}} \\rightarrow  - \\frac{1}{3}\\nabla_{b}{R_{a e c d}} - \\frac{1}{3}\\nabla_{b}{R_{a d c e}}-\\nabla_{d}{R_{a e b c}}-\\nabla_{e}{R_{a d b c}}\\end{dmath*}"
+				}
+			],
+			"source": "Kcde := \\nabla_{e d c}{K_{a' b}}-> -(1/3)(\\nabla_{b}{R_{a e c d}}\n+ \\nabla_{b}{R_{a d c e}}) - \\nabla_{d}{R_{a e b c}} - \\nabla_{e}{R_{a d b c}};"
+		},
+		{
+			"cell_id": 9605671579579918799,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 8063987162309799826,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 1059038581814478636,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\dot(z)^{c} \\dot(z)^{d} \\dot(z)^{e} \\partial_{\\epsilon}(U_{0})^{3} ( 1/3 \\nabla_{b}(R_{a c d e}) +  1/3 \\nabla_{b}(R_{a d c e})-\\nabla_{d}(R_{a c b e})-\\nabla_{c}(R_{a d b e}))"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\dot{z}\\,^{e} \\partial_{\\epsilon}{U_{0}}\\,^{3} \\left(\\frac{1}{3}\\nabla_{b}{R_{a c d e}}+\\frac{1}{3}\\nabla_{b}{R_{a d c e}}-\\nabla_{d}{R_{a c b e}}-\\nabla_{c}{R_{a d b e}}\\right)\\end{dmath*}"
+				},
+				{
+					"cell_id": 8330036130418528848,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 13976378896170698464,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-2\\dot(z)^{c} \\dot(z)^{d} \\dot(z)^{e} \\nabla_{c}(R_{a d b e}) \\partial_{\\epsilon}(U_{0})^{3}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-2\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\dot{z}\\,^{e} \\nabla_{c}{R_{a d b e}} \\partial_{\\epsilon}{U_{0}}\\,^{3}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(T1, Kcde);\ndistribute(T1);"
+		},
+		{
+			"cell_id": 5089792477138858397,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 6671443351137926525,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 2229758094615651686,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-2\\dot(z)^{c} \\dot(z)^{d} \\dot(z)^{e} \\nabla_{c}(R_{a d b e}) \\partial_{\\epsilon}(U_{0})^{3}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-2\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\dot{z}\\,^{e} \\nabla_{c}{R_{a d b e}} \\partial_{\\epsilon}{U_{0}}\\,^{3}\\end{dmath*}"
+				}
+			],
+			"source": "T1;"
+		},
+		{
+			"cell_id": 9683097859630723127,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 4709371690918493119,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 13654294514576307780,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "3\\dot(z)^{c} \\dot(z)^{d} \\nabla_{e' c d}(K_{a' b}) \\partial_{\\epsilon}(U_{0})^{2} \\xi^{e'}"
+						}
+					],
+					"source": "\\begin{dmath*}{}3\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{e' c d}{K_{a' b}} \\partial_{\\epsilon}{U_{0}}\\,^{2} \\xi^{e'}\\end{dmath*}"
+				}
+			],
+			"source": "T2 := 3 \\nabla_{e' d c}{K_{a' b}} \\dot{z}^{c} \\dot{z}^{d} \\xi^{e'}\n\\partial_{\\epsilon}{U_{0}}^{2};"
+		},
+		{
+			"cell_id": 17667967139661044393,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 11472063350090891244,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 11662116743263588724,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\dot(z)^{c} \\dot(z)^{d} \\nabla_{e' c d}(K_{a' b}) \\partial_{\\epsilon}(U_{0})^{2} \\xi^{e'} -> \\dot(z)^{c} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0})^{2} (\\dot(z)^{e} \\partial_{\\epsilon}(U_{0}) + X^{k}_{0} e^{e}_{k}) (\\nabla_{d}(R_{a e b c}) +  1/3 \\nabla_{b}(R_{a e c d}) +  1/3 \\nabla_{b}(R_{a d c e}))"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{e' c d}{K_{a' b}} \\partial_{\\epsilon}{U_{0}}\\,^{2} \\xi^{e'} \\rightarrow \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}\\,^{2} \\left(\\dot{z}\\,^{e} \\partial_{\\epsilon}{U_{0}}+X^{k}\\,_{0} e^{e}\\,_{k}\\right) \\left(\\nabla_{d}{R_{a e b c}}+\\frac{1}{3}\\nabla_{b}{R_{a e c d}}+\\frac{1}{3}\\nabla_{b}{R_{a d c e}}\\right)\\end{dmath*}"
+				}
+			],
+			"source": "subsT2 := \\nabla_{e' d c}{K_{a' b}} \\dot{z}^{c} \\dot{z}^{d} \\xi^{e'}\n\\partial_{\\epsilon}{U_{0}}^{2} -> (\\nabla_{d}{R_{a e b c}} + (1/3) \n(\\nabla_{b}{R_{a e c d}} + \\nabla_{b}{R_{a d c e}})) \\dot{z}^{c} \\dot{z}^{d}\n(\\dot{z}^{e} \\partial_{\\epsilon}{U_{0}} + e^{e}_{k} X^{k}_{0})\n\\partial_{\\epsilon}{U_{0}}^{2};"
+		},
+		{
+			"cell_id": 9136988060330376996,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 15178439912221208187,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 493177344536739674,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "3\\dot(z)^{c} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0})^{2} (\\dot(z)^{e} \\partial_{\\epsilon}(U_{0}) + X^{k}_{0} e^{e}_{k}) (\\nabla_{d}(R_{a e b c}) +  1/3 \\nabla_{b}(R_{a e c d}) +  1/3 \\nabla_{b}(R_{a d c e}))"
+						}
+					],
+					"source": "\\begin{dmath*}{}3\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}\\,^{2} \\left(\\dot{z}\\,^{e} \\partial_{\\epsilon}{U_{0}}+X^{k}\\,_{0} e^{e}\\,_{k}\\right) \\left(\\nabla_{d}{R_{a e b c}}+\\frac{1}{3}\\nabla_{b}{R_{a e c d}}+\\frac{1}{3}\\nabla_{b}{R_{a d c e}}\\right)\\end{dmath*}"
+				},
+				{
+					"cell_id": 6259204105348248151,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 6278417982970015267,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "3\\dot(z)^{c} \\dot(z)^{d} \\dot(z)^{e} \\nabla_{c}(R_{a d b e}) \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(U_{0})^{2} + 3X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k} + X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}3\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\dot{z}\\,^{e} \\nabla_{c}{R_{a d b e}} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}}\\,^{2}+3X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}+X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(T2, subsT2);\ndistribute(_);"
+		},
+		{
+			"cell_id": 4266207531834547536,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 17235003274642513608,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 3963211749663984281,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "3\\dot(z)^{c} \\dot(z)^{d} \\nabla_{c d}(K_{a' b}) \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon \\epsilon}(U_{0})"
+						}
+					],
+					"source": "\\begin{dmath*}{}3\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c d}{K_{a' b}} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon \\epsilon}{U_{0}}\\end{dmath*}"
+				}
+			],
+			"source": "T3 := 3 \\nabla_{d c}{K_{a' b}} \\dot{z}^{c} \\dot{z}^{d} \\partial_{\\epsilon}{U_{0}}\n\\partial_{\\epsilon \\epsilon}{U_{0}};"
+		},
+		{
+			"cell_id": 5507589038591487852,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 3009127483300168638,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 9088007747119285277,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\nabla_{d c}(K_{a' b}) -> -R_{a d b c}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\nabla_{d c}{K_{a' b}} \\rightarrow -R_{a d b c}\\end{dmath*}"
+				}
+			],
+			"source": "Kcd := \\nabla_{d c}{K_{a' b}} -> R_{a d c b};"
+		},
+		{
+			"cell_id": 5441327528396366151,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 16783689704599282459,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 17338625126867200794,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-3R_{a c b d} \\dot(z)^{c} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon \\epsilon}(U_{0})"
+						}
+					],
+					"source": "\\begin{dmath*}{}-3R_{a c b d} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon \\epsilon}{U_{0}}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(T3, Kcd);"
+		},
+		{
+			"cell_id": 7177885021602989437,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 9558753614142345601,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 13970288411357669186,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-3R_{a c b d} \\dot(z)^{c} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon \\epsilon}(U_{0})"
+						}
+					],
+					"source": "\\begin{dmath*}{}-3R_{a c b d} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon \\epsilon}{U_{0}}\\end{dmath*}"
+				}
+			],
+			"source": "T3;"
+		},
+		{
+			"cell_id": 12131788956003900201,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 2653515337144130511,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 13280081742483628217,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\dot(z)^{c} \\nabla_{d' c}(K_{a' b}) \\partial_{\\epsilon \\epsilon}(U_{0}) \\xi^{d'}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\dot{z}\\,^{c} \\nabla_{d' c}{K_{a' b}} \\partial_{\\epsilon \\epsilon}{U_{0}} \\xi^{d'}\\end{dmath*}"
+				}
+			],
+			"source": "T4 := \\nabla_{d' c}{K_{a' b}} \\dot{z}^{c} \\xi^{d'} \\partial_{\\epsilon \\epsilon}{U_{0}};"
+		},
+		{
+			"cell_id": 216349830780590291,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 7088827052958273209,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 932581950562424269,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\nabla_{d' c}(K_{a' b}) -> R_{a d b c}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\nabla_{d' c}{K_{a' b}} \\rightarrow R_{a d b c}\\end{dmath*}"
+				},
+				{
+					"cell_id": 3942915468821265084,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 4594456687945520311,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\xi^{d'} -> \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) + X^{k}_{0} e^{d}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\xi^{d'} \\rightarrow \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}+X^{k}\\,_{0} e^{d}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "Kcdp := \\nabla_{d' c}{K_{a' b}} -> - R_{a d c b};\nsubsxid := \\xi^{d'} -> \\dot{z}^{d} \\partial_{\\epsilon}{U_{0}} + e^{d}_{k} X^{k}_{0};"
+		},
+		{
+			"cell_id": 9618904738645154146,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 1912928927909077330,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 13564662548707704763,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "R_{a d b c} \\dot(z)^{c} \\partial_{\\epsilon \\epsilon}(U_{0}) \\xi^{d'}"
+						}
+					],
+					"source": "\\begin{dmath*}{}R_{a d b c} \\dot{z}\\,^{c} \\partial_{\\epsilon \\epsilon}{U_{0}} \\xi^{d'}\\end{dmath*}"
+				},
+				{
+					"cell_id": 14418677231710687434,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 9561307928642202895,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "R_{a d b c} \\dot(z)^{c} \\partial_{\\epsilon \\epsilon}(U_{0}) (\\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) + X^{k}_{0} e^{d}_{k})"
+						}
+					],
+					"source": "\\begin{dmath*}{}R_{a d b c} \\dot{z}\\,^{c} \\partial_{\\epsilon \\epsilon}{U_{0}} \\left(\\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}+X^{k}\\,_{0} e^{d}\\,_{k}\\right)\\end{dmath*}"
+				},
+				{
+					"cell_id": 1862975238048451278,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 17668529000362734202,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "R_{a c b d} \\dot(z)^{c} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon \\epsilon}(U_{0}) + R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}R_{a c b d} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon \\epsilon}{U_{0}}+R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(T4, Kcdp);\nsubstitute(T4, subsxid);\ndistribute(_);"
+		},
+		{
+			"cell_id": 10629949171482372375,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 10917724990384657916,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 9367963010665890231,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "R_{a c b d} \\dot(z)^{c} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon \\epsilon}(U_{0}) + R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}R_{a c b d} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon \\epsilon}{U_{0}}+R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "T4;"
+		},
+		{
+			"cell_id": 3903218111962056667,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 15294438027686397380,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 9878594654952270555,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "3\\dot(z)^{c} \\nabla_{d' e' c}(K_{a' b}) \\partial_{\\epsilon}(U_{0}) \\xi^{d'} \\xi^{e'}"
+						}
+					],
+					"source": "\\begin{dmath*}{}3\\dot{z}\\,^{c} \\nabla_{d' e' c}{K_{a' b}} \\partial_{\\epsilon}{U_{0}} \\xi^{d'} \\xi^{e'}\\end{dmath*}"
+				}
+			],
+			"source": "T5 := 3 \\nabla_{e' d' c}{K_{a' b}} \\dot{z}^{c} \\xi^{d'} \\xi^{e'} \\partial_{\\epsilon}{U_{0}};"
+		},
+		{
+			"cell_id": 12995608670041260701,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 2402927378089134806,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 3986179397574780078,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\nabla_{e' d' c}(K_{a' b}) ->  -  1/3 \\nabla_{b}(R_{a d c e}) -  1/3 \\nabla_{b}(R_{a e c d})"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\nabla_{e' d' c}{K_{a' b}} \\rightarrow  - \\frac{1}{3}\\nabla_{b}{R_{a d c e}} - \\frac{1}{3}\\nabla_{b}{R_{a e c d}}\\end{dmath*}"
+				},
+				{
+					"cell_id": 18400728729955654989,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 10253714152667622716,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\xi^{d'} \\xi^{e'} -> (\\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) + X^{k}_{0} e^{d}_{k}) (\\dot(z)^{e} \\partial_{\\epsilon}(U_{0}) + X^{l}_{0} e^{e}_{l})"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\xi^{d'} \\xi^{e'} \\rightarrow \\left(\\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}+X^{k}\\,_{0} e^{d}\\,_{k}\\right) \\left(\\dot{z}\\,^{e} \\partial_{\\epsilon}{U_{0}}+X^{l}\\,_{0} e^{e}\\,_{l}\\right)\\end{dmath*}"
+				},
+				{
+					"cell_id": 4437789868404719432,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 7769511294218217786,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(U_{0}) -> \\partial_{\\epsilon}(U_{0})^{2}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}} \\rightarrow \\partial_{\\epsilon}{U_{0}}\\,^{2}\\end{dmath*}"
+				}
+			],
+			"source": "Kcdpep := \\nabla_{e' d' c}{K_{a' b}} -> -(1/3) ( \\nabla_{b}{R_{a d c e}} \n+ \\nabla_{b}{R_{a e c d}} );\nxixisubs := \\xi^{d'} \\xi^{e'} -> ( \\dot{z}^{d} \\partial_{\\epsilon}{U_{0}} \n+ e^{d}_{k} X^{k}_{0} ) ( \\dot{z}^{e} \\partial_{\\epsilon}{U_{0}} + e^{e}_{l} X^{l}_{0} );\ndepsU0square := \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}}\n-> \\partial_{\\epsilon}{U_{0}}^{2};"
+		},
+		{
+			"cell_id": 6487892621076662743,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 488169495271698135,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 15715797733033420469,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "3\\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) ( -  1/3 \\nabla_{b}(R_{a d c e}) -  1/3 \\nabla_{b}(R_{a e c d})) \\xi^{d'} \\xi^{e'}"
+						}
+					],
+					"source": "\\begin{dmath*}{}3\\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\left( - \\frac{1}{3}\\nabla_{b}{R_{a d c e}} - \\frac{1}{3}\\nabla_{b}{R_{a e c d}}\\right) \\xi^{d'} \\xi^{e'}\\end{dmath*}"
+				},
+				{
+					"cell_id": 6326791036452282571,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 10325329967936379588,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "3\\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) ( -  1/3 \\nabla_{b}(R_{a d c e}) -  1/3 \\nabla_{b}(R_{a e c d})) (\\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) + X^{k}_{0} e^{d}_{k}) (\\dot(z)^{e} \\partial_{\\epsilon}(U_{0}) + X^{l}_{0} e^{e}_{l})"
+						}
+					],
+					"source": "\\begin{dmath*}{}3\\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\left( - \\frac{1}{3}\\nabla_{b}{R_{a d c e}} - \\frac{1}{3}\\nabla_{b}{R_{a e c d}}\\right) \\left(\\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}+X^{k}\\,_{0} e^{d}\\,_{k}\\right) \\left(\\dot{z}\\,^{e} \\partial_{\\epsilon}{U_{0}}+X^{l}\\,_{0} e^{e}\\,_{l}\\right)\\end{dmath*}"
+				},
+				{
+					"cell_id": 16629237070705383420,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 1022482808818847150,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(U_{0}) e^{e}_{l}-2X^{k}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{k} e^{e}_{l}-X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(U_{0}) e^{e}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}} e^{e}\\,_{l}-2X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l}-X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}} e^{e}\\,_{k}\\end{dmath*}"
+				},
+				{
+					"cell_id": 13441256184512897860,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 10300881466647012958,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l}-2X^{k}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{k} e^{e}_{l}-X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}-2X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l}-X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(T5, Kcdpep);\nsubstitute(T5, xixisubs);\ndistribute(_);\nsubstitute(T5, depsU0square);"
+		},
+		{
+			"cell_id": 5885326507817699257,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 4987903236177940742,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 1573099634030942894,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-2X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l}-2X^{k}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{k} e^{e}_{l}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-2X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}-2X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l}\\end{dmath*}"
+				}
+			],
+			"source": "meld(T5);"
+		},
+		{
+			"cell_id": 12387171739654753350,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 18120699953789112560,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 14060623898832155368,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-2X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l}-2X^{k}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{k} e^{e}_{l}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-2X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}-2X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l}\\end{dmath*}"
+				}
+			],
+			"source": "T5;"
+		},
+		{
+			"cell_id": 16082037769449627304,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 14101124952083022858,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 8353315023761425287,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "3\\dot(z)^{c} \\nabla_{\\epsilon}(\\xi^{d'}) \\nabla_{d' c}(K_{a' b}) \\partial_{\\epsilon}(U_{0})"
+						}
+					],
+					"source": "\\begin{dmath*}{}3\\dot{z}\\,^{c} \\nabla_{\\epsilon}{\\xi^{d'}} \\nabla_{d' c}{K_{a' b}} \\partial_{\\epsilon}{U_{0}}\\end{dmath*}"
+				}
+			],
+			"source": "T6 := 3 \\nabla_{d' c}{K_{a' b}} \\dot{z}^{c} \\nabla_{\\epsilon}{\\xi^{d'}} \n\\partial_{\\epsilon}{U_{0}};"
+		},
+		{
+			"cell_id": 11294694705301112112,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 9054483364972554161,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 238925324034908507,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\nabla_{\\epsilon}(\\xi^{d'}) -> \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) + 2\\partial_{\\epsilon}(X^{k}_{0}) e^{d}_{k} + 2V_{0} n^{d}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\nabla_{\\epsilon}{\\xi^{d'}} \\rightarrow \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}}+2\\partial_{\\epsilon}{X^{k}\\,_{0}} e^{d}\\,_{k}+2V_{0} n^{d}\\end{dmath*}"
+				}
+			],
+			"source": "Depsxi := \\nabla_{\\epsilon}{\\xi^{d'}} -> \\dot{z}^{d} \\partial_{\\epsilon \\epsilon}{U_{0}}\n+ 2 e^{d}_{k} \\partial_{\\epsilon}{X^{k}_{0}} + 2 n^{d} V_{0};"
+		},
+		{
+			"cell_id": 1219441095418301040,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 5151345337620752850,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 7563216587263254685,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "3R_{a d b c} \\dot(z)^{c} \\nabla_{\\epsilon}(\\xi^{d'}) \\partial_{\\epsilon}(U_{0})"
+						}
+					],
+					"source": "\\begin{dmath*}{}3R_{a d b c} \\dot{z}\\,^{c} \\nabla_{\\epsilon}{\\xi^{d'}} \\partial_{\\epsilon}{U_{0}}\\end{dmath*}"
+				},
+				{
+					"cell_id": 4971474050648894131,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 6990103031610583673,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "3R_{a d b c} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) (\\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) + 2\\partial_{\\epsilon}(X^{k}_{0}) e^{d}_{k} + 2V_{0} n^{d})"
+						}
+					],
+					"source": "\\begin{dmath*}{}3R_{a d b c} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\left(\\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}}+2\\partial_{\\epsilon}{X^{k}\\,_{0}} e^{d}\\,_{k}+2V_{0} n^{d}\\right)\\end{dmath*}"
+				},
+				{
+					"cell_id": 14239978885650976170,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 12663948431441986516,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "3R_{a c b d} \\dot(z)^{c} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon \\epsilon}(U_{0}) + 6R_{a c b d} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} + 6R_{a c b d} V_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) n^{c}"
+						}
+					],
+					"source": "\\begin{dmath*}{}3R_{a c b d} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon \\epsilon}{U_{0}}+6R_{a c b d} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k}+6R_{a c b d} V_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} n^{c}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(T6, Kcdp);\nsubstitute(T6, Depsxi);\ndistribute(T6);"
+		},
+		{
+			"cell_id": 7858123094039828521,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 3900605986861802409,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 4219011640197160440,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "3R_{a c b d} \\dot(z)^{c} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon \\epsilon}(U_{0}) + 6R_{a c b d} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} + 6R_{a c b d} V_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) n^{c}"
+						}
+					],
+					"source": "\\begin{dmath*}{}3R_{a c b d} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon \\epsilon}{U_{0}}+6R_{a c b d} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k}+6R_{a c b d} V_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} n^{c}\\end{dmath*}"
+				}
+			],
+			"source": "T6;"
+		},
+		{
+			"cell_id": 2919080276613983723,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 2376878152556443064,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 1470599141498829697,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "2\\dot(z)^{c} \\nabla_{d' c}(K_{a' b}) \\partial_{\\epsilon \\epsilon}(U_{0}) \\xi^{d'}"
+						}
+					],
+					"source": "\\begin{dmath*}{}2\\dot{z}\\,^{c} \\nabla_{d' c}{K_{a' b}} \\partial_{\\epsilon \\epsilon}{U_{0}} \\xi^{d'}\\end{dmath*}"
+				}
+			],
+			"source": "T7 := 2 \\nabla_{d' c}{K_{a' b}} \\dot{z}^{c} \\xi^{d'} \\partial_{\\epsilon \\epsilon}{U_{0}};"
+		},
+		{
+			"cell_id": 14452785474805287187,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 12717271038166744752,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 7661700502506650959,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "2R_{a d b c} \\dot(z)^{c} \\partial_{\\epsilon \\epsilon}(U_{0}) \\xi^{d'}"
+						}
+					],
+					"source": "\\begin{dmath*}{}2R_{a d b c} \\dot{z}\\,^{c} \\partial_{\\epsilon \\epsilon}{U_{0}} \\xi^{d'}\\end{dmath*}"
+				},
+				{
+					"cell_id": 8041807296735508339,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 656782682280158730,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "2R_{a d b c} \\dot(z)^{c} \\partial_{\\epsilon \\epsilon}(U_{0}) (\\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) + X^{k}_{0} e^{d}_{k})"
+						}
+					],
+					"source": "\\begin{dmath*}{}2R_{a d b c} \\dot{z}\\,^{c} \\partial_{\\epsilon \\epsilon}{U_{0}} \\left(\\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}+X^{k}\\,_{0} e^{d}\\,_{k}\\right)\\end{dmath*}"
+				},
+				{
+					"cell_id": 3536888496872849476,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 16086998961283432919,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "2R_{a c b d} \\dot(z)^{c} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon \\epsilon}(U_{0}) + 2R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}2R_{a c b d} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon \\epsilon}{U_{0}}+2R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(T7, Kcdp);\nsubstitute(T7, subsxid);\ndistribute(T7);"
+		},
+		{
+			"cell_id": 7604297147831702901,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 8426085727609852153,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 11727471743900295068,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "2R_{a c b d} \\dot(z)^{c} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon \\epsilon}(U_{0}) + 2R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}2R_{a c b d} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon \\epsilon}{U_{0}}+2R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "T7;"
+		},
+		{
+			"cell_id": 9500339794160018455,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 1106379360687086524,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 12903112574183761065,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\nabla_{c' d' e'}(K_{a' b}) \\xi^{c'} \\xi^{d'} \\xi^{e'}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\nabla_{c' d' e'}{K_{a' b}} \\xi^{c'} \\xi^{d'} \\xi^{e'}\\end{dmath*}"
+				}
+			],
+			"source": "T8 := \\nabla_{e' d' c'}{K_{a' b}} \\xi^{c'} \\xi^{d'} \\xi^{e'};"
+		},
+		{
+			"cell_id": 2574832991870527504,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 14747717927356130702,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 12554332106975521083,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\nabla_{e' d' c'}(K_{a' b}) -> -\\nabla_{e}(R_{a c b d}) -  1/3 \\nabla_{b}(R_{a c d e}) -  1/3 \\nabla_{b}(R_{a d c e})"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\nabla_{e' d' c'}{K_{a' b}} \\rightarrow -\\nabla_{e}{R_{a c b d}} - \\frac{1}{3}\\nabla_{b}{R_{a c d e}} - \\frac{1}{3}\\nabla_{b}{R_{a d c e}}\\end{dmath*}"
+				},
+				{
+					"cell_id": 15280381109904798265,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 17914389591192780632,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\xi^{c'} \\xi^{d'} \\xi^{e'} -> (\\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) + X^{i}_{0} e^{c}_{i}) (\\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) + X^{j}_{0} e^{d}_{j}) (\\dot(z)^{e} \\partial_{\\epsilon}(U_{0}) + X^{l}_{0} e^{e}_{l})"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\xi^{c'} \\xi^{d'} \\xi^{e'} \\rightarrow \\left(\\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}}+X^{i}\\,_{0} e^{c}\\,_{i}\\right) \\left(\\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}+X^{j}\\,_{0} e^{d}\\,_{j}\\right) \\left(\\dot{z}\\,^{e} \\partial_{\\epsilon}{U_{0}}+X^{l}\\,_{0} e^{e}\\,_{l}\\right)\\end{dmath*}"
+				},
+				{
+					"cell_id": 7726358311917230040,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 3087310865401176527,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(U_{0}) -> \\partial_{\\epsilon}(U_{0})^{3}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}} \\rightarrow \\partial_{\\epsilon}{U_{0}}\\,^{3}\\end{dmath*}"
+				}
+			],
+			"source": "Kcpdpep := \\nabla_{e' d' c'}{K_{a' b}} -> \\nabla_{e}{R_{a c d b}} \n+ (1/3)( \\nabla_{b}{R_{a c e d}} + \\nabla_{b}{R_{a d e c}} );\nxixixisubs := \\xi^{c'} \\xi^{d'} \\xi^{e'} -> ( \\dot{z}^{c} \\partial_{\\epsilon}{U_{0}} \n+ e^{c}_{i} X^{i}_{0} ) ( \\dot{z}^{d} \\partial_{\\epsilon}{U_{0}} \n+ e^{d}_{j} X^{j}_{0} ) ( \\dot{z}^{e} \\partial_{\\epsilon}{U_{0}} + e^{e}_{l} X^{l}_{0} );\ndepsU0cube := \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}} \n\\partial_{\\epsilon}{U_{0}} -> \\partial_{\\epsilon}{U_{0}}^{3};"
+		},
+		{
+			"cell_id": 3049617863208610388,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 8900878628100096285,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 8994421065702393714,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "(-\\nabla_{e}(R_{a c b d}) -  1/3 \\nabla_{b}(R_{a c d e}) -  1/3 \\nabla_{b}(R_{a d c e})) \\xi^{c'} \\xi^{d'} \\xi^{e'}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\left(-\\nabla_{e}{R_{a c b d}} - \\frac{1}{3}\\nabla_{b}{R_{a c d e}} - \\frac{1}{3}\\nabla_{b}{R_{a d c e}}\\right) \\xi^{c'} \\xi^{d'} \\xi^{e'}\\end{dmath*}"
+				},
+				{
+					"cell_id": 14886714015405069632,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 5138830035556300490,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "(\\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) + X^{i}_{0} e^{c}_{i}) (\\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) + X^{j}_{0} e^{d}_{j}) (\\dot(z)^{e} \\partial_{\\epsilon}(U_{0}) + X^{l}_{0} e^{e}_{l}) (-\\nabla_{e}(R_{a c b d}) -  1/3 \\nabla_{b}(R_{a c d e}) -  1/3 \\nabla_{b}(R_{a d c e}))"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\left(\\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}}+X^{i}\\,_{0} e^{c}\\,_{i}\\right) \\left(\\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}+X^{j}\\,_{0} e^{d}\\,_{j}\\right) \\left(\\dot{z}\\,^{e} \\partial_{\\epsilon}{U_{0}}+X^{l}\\,_{0} e^{e}\\,_{l}\\right) \\left(-\\nabla_{e}{R_{a c b d}} - \\frac{1}{3}\\nabla_{b}{R_{a c d e}} - \\frac{1}{3}\\nabla_{b}{R_{a d c e}}\\right)\\end{dmath*}"
+				},
+				{
+					"cell_id": 14785147138551753063,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 281722988128505054,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-\\dot(z)^{c} \\dot(z)^{d} \\dot(z)^{e} \\nabla_{c}(R_{a d b e}) \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(U_{0})-X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{e}(R_{a c b d}) \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(U_{0}) e^{e}_{l} -  2/3 X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(U_{0}) e^{e}_{l}-X^{j}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a d b e}) \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(U_{0}) e^{e}_{j} +  1/3 X^{j}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(U_{0}) e^{e}_{j}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a c b e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l} -  1/3 X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-X^{i}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(U_{0}) e^{e}_{i} +  1/3 X^{i}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(U_{0}) e^{e}_{i}-X^{i}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a e b c}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{l} -  1/3 X^{i}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{l}-X^{i}_{0} X^{j}_{0} \\dot(z)^{c} \\nabla_{c}(R_{a d b e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{j} +  2/3 X^{i}_{0} X^{j}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{j}-X^{i}_{0} X^{j}_{0} X^{l}_{0} \\nabla_{c}(R_{a d b e}) e^{c}_{i} e^{d}_{j} e^{e}_{l}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\dot{z}\\,^{e} \\nabla_{c}{R_{a d b e}} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}}-X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{e}{R_{a c b d}} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}} e^{e}\\,_{l} - \\frac{2}{3}X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}} e^{e}\\,_{l}-X^{j}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a d b e}} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}} e^{e}\\,_{j}+\\frac{1}{3}X^{j}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}} e^{e}\\,_{j}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a c b e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l} - \\frac{1}{3}X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-X^{i}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}} e^{e}\\,_{i}+\\frac{1}{3}X^{i}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}} e^{e}\\,_{i}-X^{i}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a e b c}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{l} - \\frac{1}{3}X^{i}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{l}-X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{c} \\nabla_{c}{R_{a d b e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{j}+\\frac{2}{3}X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{j}-X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\nabla_{c}{R_{a d b e}} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}\\end{dmath*}"
+				},
+				{
+					"cell_id": 6359693616771804427,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 5775470884945417746,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-\\dot(z)^{c} \\dot(z)^{d} \\dot(z)^{e} \\nabla_{c}(R_{a d b e}) \\partial_{\\epsilon}(U_{0})^{3}-X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{e}(R_{a c b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l} -  2/3 X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l}-X^{j}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a d b e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{j} +  1/3 X^{j}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{j}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a c b e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l} -  1/3 X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-X^{i}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{i} +  1/3 X^{i}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{i}-X^{i}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a e b c}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{l} -  1/3 X^{i}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{l}-X^{i}_{0} X^{j}_{0} \\dot(z)^{c} \\nabla_{c}(R_{a d b e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{j} +  2/3 X^{i}_{0} X^{j}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{j}-X^{i}_{0} X^{j}_{0} X^{l}_{0} \\nabla_{c}(R_{a d b e}) e^{c}_{i} e^{d}_{j} e^{e}_{l}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\dot{z}\\,^{e} \\nabla_{c}{R_{a d b e}} \\partial_{\\epsilon}{U_{0}}\\,^{3}-X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{e}{R_{a c b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l} - \\frac{2}{3}X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}-X^{j}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a d b e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{j}+\\frac{1}{3}X^{j}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{j}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a c b e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l} - \\frac{1}{3}X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-X^{i}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{i}+\\frac{1}{3}X^{i}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{i}-X^{i}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a e b c}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{l} - \\frac{1}{3}X^{i}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{l}-X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{c} \\nabla_{c}{R_{a d b e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{j}+\\frac{2}{3}X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{j}-X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\nabla_{c}{R_{a d b e}} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(T8, Kcpdpep);\nsubstitute(T8, xixixisubs);\ndistribute(T8);\nsubstitute(T8, depsU0cube),\nsubstitute(T8, depsU0square);"
+		},
+		{
+			"cell_id": 1580071214083977262,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 3308109691106884063,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 5354793125993389651,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-\\dot(z)^{c} \\dot(z)^{d} \\dot(z)^{e} \\nabla_{c}(R_{a d b e}) \\partial_{\\epsilon}(U_{0})^{3}-2X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{e}(R_{a c b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l}-X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a c b e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-X^{i}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{i}-2X^{i}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a e b c}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{l}-X^{i}_{0} X^{j}_{0} X^{l}_{0} \\nabla_{c}(R_{a d b e}) e^{c}_{i} e^{d}_{j} e^{e}_{l}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\dot{z}\\,^{e} \\nabla_{c}{R_{a d b e}} \\partial_{\\epsilon}{U_{0}}\\,^{3}-2X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{e}{R_{a c b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}-X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a c b e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-X^{i}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{i}-2X^{i}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a e b c}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{l}-X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\nabla_{c}{R_{a d b e}} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}\\end{dmath*}"
+				}
+			],
+			"source": "meld(T8);"
+		},
+		{
+			"cell_id": 16189528301313049194,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 5196889256846465686,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 9696966752881273230,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-\\dot(z)^{c} \\dot(z)^{d} \\dot(z)^{e} \\nabla_{c}(R_{a d b e}) \\partial_{\\epsilon}(U_{0})^{3}-2X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{e}(R_{a c b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l}-X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a c b e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-X^{i}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{i}-2X^{i}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a e b c}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{l}-X^{i}_{0} X^{j}_{0} X^{l}_{0} \\nabla_{c}(R_{a d b e}) e^{c}_{i} e^{d}_{j} e^{e}_{l}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\dot{z}\\,^{e} \\nabla_{c}{R_{a d b e}} \\partial_{\\epsilon}{U_{0}}\\,^{3}-2X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{e}{R_{a c b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}-X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a c b e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-X^{i}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{i}-2X^{i}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a e b c}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{l}-X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\nabla_{c}{R_{a d b e}} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}\\end{dmath*}"
+				}
+			],
+			"source": "T8;"
+		},
+		{
+			"cell_id": 9994109407258828266,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 4158148744955626501,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 10208829490009903173,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\nabla_{\\epsilon}(\\xi^{c'}) (2\\nabla_{d' c'}(K_{a' b}) + \\nabla_{c' d'}(K_{a' b})) \\xi^{d'}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\nabla_{\\epsilon}{\\xi^{c'}} \\left(2\\nabla_{d' c'}{K_{a' b}}+\\nabla_{c' d'}{K_{a' b}}\\right) \\xi^{d'}\\end{dmath*}"
+				}
+			],
+			"source": "T9 := ( 2 \\nabla_{d' c'}{K_{a' b}} + \\nabla_{c' d'}{K_{a' b}} ) \n\\nabla_{\\epsilon}{\\xi^{c'}} \\xi^{d'};"
+		},
+		{
+			"cell_id": 8153819561218727166,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 6596709129107761799,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 5582393035563797096,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\nabla_{\\epsilon}(\\xi^{c'}) \\xi^{d'} -> (\\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) + X^{j}_{0} e^{d}_{j}) (\\dot(z)^{c} \\partial_{\\epsilon \\epsilon}(U_{0}) + 2\\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} + 2V_{0} n^{c})"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\nabla_{\\epsilon}{\\xi^{c'}} \\xi^{d'} \\rightarrow \\left(\\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}+X^{j}\\,_{0} e^{d}\\,_{j}\\right) \\left(\\dot{z}\\,^{c} \\partial_{\\epsilon \\epsilon}{U_{0}}+2\\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k}+2V_{0} n^{c}\\right)\\end{dmath*}"
+				},
+				{
+					"cell_id": 16030959443332541842,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 11522653736785476867,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "2\\nabla_{d' c'}(K_{a' b}) + \\nabla_{c' d'}(K_{a' b}) -> -2R_{a c b d}-R_{a d b c}"
+						}
+					],
+					"source": "\\begin{dmath*}{}2\\nabla_{d' c'}{K_{a' b}}+\\nabla_{c' d'}{K_{a' b}} \\rightarrow -2R_{a c b d}-R_{a d b c}\\end{dmath*}"
+				}
+			],
+			"source": "Depsxixi := \\nabla_{\\epsilon}{\\xi^{c'}} \\xi^{d'} -> ( \\dot{z}^{c} \n\\partial_{\\epsilon \\epsilon}{U_{0}} + 2 e^{c}_{k} \\partial_{\\epsilon}{X^{k}_{0}} \n+ 2 n^{c} V_{0} ) ( \\dot{z}^{d} \\partial_{\\epsilon}{U_{0}} + e^{d}_{j} X^{j}_{0} );\nsubsT9K := 2 \\nabla_{d' c'}{K_{a' b}} + \\nabla_{c' d'}{K_{a' b}} -> \n2 R_{a c d b} + R_{a d c b};"
+		},
+		{
+			"cell_id": 4830993659257433421,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 5655503837399713341,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 924879133705558600,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "(2\\nabla_{d' c'}(K_{a' b}) + \\nabla_{c' d'}(K_{a' b})) (\\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) + X^{j}_{0} e^{d}_{j}) (\\dot(z)^{c} \\partial_{\\epsilon \\epsilon}(U_{0}) + 2\\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} + 2V_{0} n^{c})"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\left(2\\nabla_{d' c'}{K_{a' b}}+\\nabla_{c' d'}{K_{a' b}}\\right) \\left(\\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}+X^{j}\\,_{0} e^{d}\\,_{j}\\right) \\left(\\dot{z}\\,^{c} \\partial_{\\epsilon \\epsilon}{U_{0}}+2\\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k}+2V_{0} n^{c}\\right)\\end{dmath*}"
+				},
+				{
+					"cell_id": 6433821738257404028,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 8153086410866349825,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "(-2R_{a c b d}-R_{a d b c}) (\\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) + X^{j}_{0} e^{d}_{j}) (\\dot(z)^{c} \\partial_{\\epsilon \\epsilon}(U_{0}) + 2\\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} + 2V_{0} n^{c})"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\left(-2R_{a c b d}-R_{a d b c}\\right) \\left(\\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}+X^{j}\\,_{0} e^{d}\\,_{j}\\right) \\left(\\dot{z}\\,^{c} \\partial_{\\epsilon \\epsilon}{U_{0}}+2\\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k}+2V_{0} n^{c}\\right)\\end{dmath*}"
+				},
+				{
+					"cell_id": 4217250293781035941,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 3761135935273081139,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-3R_{a c b d} \\dot(z)^{c} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon \\epsilon}(U_{0})-4R_{a c b d} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k}-4R_{a c b d} V_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) n^{c}-2R_{a c b d} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{d}_{j}-4R_{a c b d} X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} e^{d}_{j}-4R_{a c b d} V_{0} X^{j}_{0} e^{d}_{j} n^{c}-2R_{a c b d} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{d}_{k}-2R_{a c b d} V_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) n^{d}-R_{a c b d} X^{j}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{j}-2R_{a c b d} X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{j} e^{d}_{k}-2R_{a c b d} V_{0} X^{j}_{0} e^{c}_{j} n^{d}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-3R_{a c b d} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon \\epsilon}{U_{0}}-4R_{a c b d} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k}-4R_{a c b d} V_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} n^{c}-2R_{a c b d} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{d}\\,_{j}-4R_{a c b d} X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k} e^{d}\\,_{j}-4R_{a c b d} V_{0} X^{j}\\,_{0} e^{d}\\,_{j} n^{c}-2R_{a c b d} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{d}\\,_{k}-2R_{a c b d} V_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} n^{d}-R_{a c b d} X^{j}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{j}-2R_{a c b d} X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{j} e^{d}\\,_{k}-2R_{a c b d} V_{0} X^{j}\\,_{0} e^{c}\\,_{j} n^{d}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(T9, Depsxixi);\nsubstitute(T9, subsT9K);\ndistribute(T9);"
+		},
+		{
+			"cell_id": 10076302792191098369,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 15556861679269060849,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 1755451625220439759,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-3R_{a c b d} \\dot(z)^{c} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon \\epsilon}(U_{0})-4R_{a c b d} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k}-4R_{a c b d} V_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) n^{c}-2R_{a c b d} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{d}_{j}-4R_{a c b d} X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} e^{d}_{j}-4R_{a c b d} V_{0} X^{j}_{0} e^{d}_{j} n^{c}-2R_{a c b d} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{d}_{k}-2R_{a c b d} V_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) n^{d}-R_{a c b d} X^{j}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{j}-2R_{a c b d} X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{j} e^{d}_{k}-2R_{a c b d} V_{0} X^{j}_{0} e^{c}_{j} n^{d}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-3R_{a c b d} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon \\epsilon}{U_{0}}-4R_{a c b d} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k}-4R_{a c b d} V_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} n^{c}-2R_{a c b d} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{d}\\,_{j}-4R_{a c b d} X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k} e^{d}\\,_{j}-4R_{a c b d} V_{0} X^{j}\\,_{0} e^{d}\\,_{j} n^{c}-2R_{a c b d} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{d}\\,_{k}-2R_{a c b d} V_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} n^{d}-R_{a c b d} X^{j}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{j}-2R_{a c b d} X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{j} e^{d}\\,_{k}-2R_{a c b d} V_{0} X^{j}\\,_{0} e^{c}\\,_{j} n^{d}\\end{dmath*}"
+				}
+			],
+			"source": "T9;"
+		},
+		{
+			"cell_id": 4712259698146496836,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 12438260008611918753,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 18106563845495789049,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-3\\dot(z)^{c} \\dot(z)^{d} \\dot(z)^{e} \\nabla_{c}(R_{a d b e}) \\partial_{\\epsilon}(U_{0})^{3} + 3\\dot(z)^{c} \\dot(z)^{d} \\dot(z)^{e} \\nabla_{c}(R_{a d b e}) \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(U_{0})^{2} + 3X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k} + X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k} + 3R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{k}-3X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l}-2X^{k}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{k} e^{e}_{l} + 2R_{a c b d} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} + 2R_{a c b d} V_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) n^{c}-2X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{e}(R_{a c b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a c b e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-X^{i}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{i}-2X^{i}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a e b c}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{l}-X^{i}_{0} X^{j}_{0} X^{l}_{0} \\nabla_{c}(R_{a d b e}) e^{c}_{i} e^{d}_{j} e^{e}_{l}-2R_{a c b d} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{d}_{j}-4R_{a c b d} X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} e^{d}_{j}-4R_{a c b d} V_{0} X^{j}_{0} e^{d}_{j} n^{c}-2R_{a c b d} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{d}_{k}-2R_{a c b d} V_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) n^{d}-R_{a c b d} X^{j}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{j}-2R_{a c b d} X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{j} e^{d}_{k}-2R_{a c b d} V_{0} X^{j}_{0} e^{c}_{j} n^{d}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-3\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\dot{z}\\,^{e} \\nabla_{c}{R_{a d b e}} \\partial_{\\epsilon}{U_{0}}\\,^{3}+3\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\dot{z}\\,^{e} \\nabla_{c}{R_{a d b e}} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}}\\,^{2}+3X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}+X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}+3R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{k}-3X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}-2X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l}+2R_{a c b d} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k}+2R_{a c b d} V_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} n^{c}-2X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{e}{R_{a c b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a c b e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-X^{i}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{i}-2X^{i}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a e b c}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{l}-X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\nabla_{c}{R_{a d b e}} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}-2R_{a c b d} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{d}\\,_{j}-4R_{a c b d} X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k} e^{d}\\,_{j}-4R_{a c b d} V_{0} X^{j}\\,_{0} e^{d}\\,_{j} n^{c}-2R_{a c b d} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{d}\\,_{k}%\n-2R_{a c b d} V_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} n^{d}-R_{a c b d} X^{j}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{j}-2R_{a c b d} X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{j} e^{d}\\,_{k}-2R_{a c b d} V_{0} X^{j}\\,_{0} e^{c}\\,_{j} n^{d}\\end{dmath*}"
+				}
+			],
+			"source": "Deps3KCL := @(T1) + @(T2) + @(T3) + @(T4) + @(T5) + @(T6) + @(T7) + @(T8) + @(T9);"
+		},
+		{
+			"cell_id": 11731767231844346090,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 18294456776753646987,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 13243059738012486446,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(U_{0})^{2} -> \\partial_{\\epsilon}(U_{0})^{3}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}}\\,^{2} \\rightarrow \\partial_{\\epsilon}{U_{0}}\\,^{3}\\end{dmath*}"
+				}
+			],
+			"source": "depsU0cube2 := \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{U_{0}}^{2}\n-> \\partial_{\\epsilon}{U_{0}}^{3};"
+		},
+		{
+			"cell_id": 1509738152063213111,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 16720775359287751819,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 10270098299680103043,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "3X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k} + X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k} + 3R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{k}-3X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l}-2X^{k}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{k} e^{e}_{l} + 2R_{a c b d} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} + 2R_{a c b d} V_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) n^{c}-2X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{e}(R_{a c b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a c b e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-X^{i}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{i}-2X^{i}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a e b c}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{l}-X^{i}_{0} X^{j}_{0} X^{l}_{0} \\nabla_{c}(R_{a d b e}) e^{c}_{i} e^{d}_{j} e^{e}_{l}-2R_{a c b d} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{d}_{j}-4R_{a c b d} X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} e^{d}_{j}-4R_{a c b d} V_{0} X^{j}_{0} e^{d}_{j} n^{c}-2R_{a c b d} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{d}_{k}-2R_{a c b d} V_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) n^{d}-R_{a c b d} X^{j}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{j}-2R_{a c b d} X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{j} e^{d}_{k}-2R_{a c b d} V_{0} X^{j}_{0} e^{c}_{j} n^{d}"
+						}
+					],
+					"source": "\\begin{dmath*}{}3X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}+X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}+3R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{k}-3X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}-2X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l}+2R_{a c b d} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k}+2R_{a c b d} V_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} n^{c}-2X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{e}{R_{a c b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a c b e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-X^{i}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{i}-2X^{i}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a e b c}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{l}-X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\nabla_{c}{R_{a d b e}} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}-2R_{a c b d} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{d}\\,_{j}-4R_{a c b d} X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k} e^{d}\\,_{j}-4R_{a c b d} V_{0} X^{j}\\,_{0} e^{d}\\,_{j} n^{c}-2R_{a c b d} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{d}\\,_{k}-2R_{a c b d} V_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} n^{d}-R_{a c b d} X^{j}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{j}%\n-2R_{a c b d} X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{j} e^{d}\\,_{k}-2R_{a c b d} V_{0} X^{j}\\,_{0} e^{c}\\,_{j} n^{d}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(Deps3KCL, depsU0cube2);"
+		},
+		{
+			"cell_id": 1157334276419780319,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 2618752141963077375,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 15463129903455299954,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "3X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k} + X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k} +  ... -3X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l} +  ... -2X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{e}(R_{a c b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l} +  ... -X^{i}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{i} +  ... "
+						}
+					],
+					"source": "\\begin{dmath*}{}3X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}+X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}+ \\ldots -3X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}+ \\ldots -2X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{e}{R_{a c b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}+ \\ldots -X^{i}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{i}+ \\ldots \\end{dmath*}"
+				}
+			],
+			"source": "zoom(Deps3KCL, $\\partial_{\\epsilon}{U_{0}}^{2} Q??$);"
+		},
+		{
+			"cell_id": 13589306181426269095,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 10469197715849836537,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 1505564003156919662,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k}-3X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l} -> -2X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}-3X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l} \\rightarrow -2X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}\\end{dmath*}"
+				},
+				{
+					"cell_id": 17768841911967783677,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 13037705469454751089,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "3X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k}-X^{i}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{i} -> 2X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}3X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}-X^{i}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{i} \\rightarrow 2X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "D3Ksubs1 := \\nabla_{b}{R_{a c d e}} \\dot{z}^{c} \\dot{z}^{d} e^{e}_{k} X^{k}_{0}\n\\partial_{\\epsilon}{U_{0}}^{2} - 3 \\nabla_{b}{R_{a c d e}} \\dot{z}^{c} \\dot{z}^{d} \ne^{e}_{l} X^{l}_{0} \\partial_{\\epsilon}{U_{0}}^{2} -> - 2 \\nabla_{b}{R_{a c d e}} \n\\dot{z}^{c} \\dot{z}^{d} e^{e}_{k} X^{k}_{0} \\partial_{\\epsilon}{U_{0}}^{2};\nD3Ksubs2 := 3 \\nabla_{c}{R_{a e b d}} \\dot{z}^{c} \\dot{z}^{d} e^{e}_{k} X^{k}_{0}\n\\partial_{\\epsilon}{U_{0}}^{2} - \\nabla_{c}{R_{a e b d}} \\dot{z}^{c} \\dot{z}^{d} e^{e}_{i} \nX^{i}_{0} \\partial_{\\epsilon}{U_{0}}^{2} -> 2 \\nabla_{c}{R_{a e b d}} \\dot{z}^{c} \\dot{z}^{d}\ne^{e}_{k} X^{k}_{0} \\partial_{\\epsilon}{U_{0}}^{2};"
+		},
+		{
+			"cell_id": 6453096470027025841,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 7606491831058735973,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 5129208675258838785,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "3X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k}-2X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k} +  ...  +  ... -2X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{e}(R_{a c b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l} +  ... -X^{i}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{i} +  ... "
+						}
+					],
+					"source": "\\begin{dmath*}{}3X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}-2X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}+ \\ldots + \\ldots -2X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{e}{R_{a c b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}+ \\ldots -X^{i}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{i}+ \\ldots \\end{dmath*}"
+				},
+				{
+					"cell_id": 10314351204377459782,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 17057622588397026998,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "2X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k}-2X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k} +  ...  +  ... -2X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{e}(R_{a c b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l} +  ...  +  ... "
+						}
+					],
+					"source": "\\begin{dmath*}{}2X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}-2X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}+ \\ldots + \\ldots -2X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{e}{R_{a c b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}+ \\ldots + \\ldots \\end{dmath*}"
+				}
+			],
+			"source": "substitute(Deps3KCL, D3Ksubs1);\nsubstitute(Deps3KCL, D3Ksubs2);"
+		},
+		{
+			"cell_id": 6829880484000625853,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 14756941162538592011,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 3647886701537432420,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "2X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k}-2X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k} + 3R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{k}-2X^{k}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{k} e^{e}_{l} + 2R_{a c b d} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} + 2R_{a c b d} V_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) n^{c}-2X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{e}(R_{a c b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a c b e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-2X^{i}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a e b c}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{l}-X^{i}_{0} X^{j}_{0} X^{l}_{0} \\nabla_{c}(R_{a d b e}) e^{c}_{i} e^{d}_{j} e^{e}_{l}-2R_{a c b d} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{d}_{j}-4R_{a c b d} X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} e^{d}_{j}-4R_{a c b d} V_{0} X^{j}_{0} e^{d}_{j} n^{c}-2R_{a c b d} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{d}_{k}-2R_{a c b d} V_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) n^{d}-R_{a c b d} X^{j}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{j}-2R_{a c b d} X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{j} e^{d}_{k}-2R_{a c b d} V_{0} X^{j}_{0} e^{c}_{j} n^{d}"
+						}
+					],
+					"source": "\\begin{dmath*}{}2X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}-2X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}+3R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{k}-2X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l}+2R_{a c b d} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k}+2R_{a c b d} V_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} n^{c}-2X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{e}{R_{a c b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a c b e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-2X^{i}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a e b c}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{l}-X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\nabla_{c}{R_{a d b e}} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}-2R_{a c b d} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{d}\\,_{j}-4R_{a c b d} X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k} e^{d}\\,_{j}-4R_{a c b d} V_{0} X^{j}\\,_{0} e^{d}\\,_{j} n^{c}-2R_{a c b d} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{d}\\,_{k}-2R_{a c b d} V_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} n^{d}-R_{a c b d} X^{j}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{j}-2R_{a c b d} X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{j} e^{d}\\,_{k}-2R_{a c b d} V_{0} X^{j}\\,_{0} e^{c}\\,_{j} n^{d}\\end{dmath*}"
+				}
+			],
+			"source": "unzoom(Deps3KCL);"
+		},
+		{
+			"cell_id": 14710966237476890824,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 15427643674036395662,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 12851260768983193975,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " ...  + 3R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{k} +  ... -2R_{a c b d} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{d}_{j} +  ... -R_{a c b d} X^{j}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{j} +  ... "
+						}
+					],
+					"source": "\\begin{dmath*}{} \\ldots +3R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{k}+ \\ldots -2R_{a c b d} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{d}\\,_{j}+ \\ldots -R_{a c b d} X^{j}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{j}+ \\ldots \\end{dmath*}"
+				}
+			],
+			"source": "zoom(Deps3KCL, $\\partial_{\\epsilon \\epsilon}{U_{0}} Q??$);"
+		},
+		{
+			"cell_id": 10831549737654778902,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 10165475168776160591,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 9316067252422956107,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "3R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{k}-R_{a c b d} X^{j}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{j} -> 2R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}3R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{k}-R_{a c b d} X^{j}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{j} \\rightarrow 2R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "D3Ksubs3 := 3 R_{a c b d} \\dot{z}^{d} e^{c}_{k} X^{k}_{0} \n\\partial_{\\epsilon \\epsilon}{U_{0}} - R_{a c b d} \\dot{z}^{d} e^{c}_{j} X^{j}_{0}\n\\partial_{\\epsilon \\epsilon}{U_{0}} -> 2 R_{a c b d} \\dot{z}^{d} e^{c}_{k} X^{k}_{0} \n\\partial_{\\epsilon \\epsilon}{U_{0}};"
+		},
+		{
+			"cell_id": 2872584875746753384,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 16897364222963651790,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 11175689218213056840,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " ...  + 2R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{k} +  ... -2R_{a c b d} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{d}_{j} +  ...  +  ... "
+						}
+					],
+					"source": "\\begin{dmath*}{} \\ldots +2R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{k}+ \\ldots -2R_{a c b d} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{d}\\,_{j}+ \\ldots + \\ldots \\end{dmath*}"
+				}
+			],
+			"source": "substitute(Deps3KCL, D3Ksubs3);"
+		},
+		{
+			"cell_id": 15552771423197049086,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 1656744444119177410,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 146385645848512933,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "2X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k}-2X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k} + 2R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{k}-2X^{k}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{k} e^{e}_{l} + 2R_{a c b d} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} + 2R_{a c b d} V_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) n^{c}-2X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{e}(R_{a c b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a c b e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-2X^{i}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a e b c}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{l}-X^{i}_{0} X^{j}_{0} X^{l}_{0} \\nabla_{c}(R_{a d b e}) e^{c}_{i} e^{d}_{j} e^{e}_{l}-2R_{a c b d} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{d}_{j}-4R_{a c b d} X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} e^{d}_{j}-4R_{a c b d} V_{0} X^{j}_{0} e^{d}_{j} n^{c}-2R_{a c b d} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{d}_{k}-2R_{a c b d} V_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) n^{d}-2R_{a c b d} X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{j} e^{d}_{k}-2R_{a c b d} V_{0} X^{j}_{0} e^{c}_{j} n^{d}"
+						}
+					],
+					"source": "\\begin{dmath*}{}2X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}-2X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}+2R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{k}-2X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l}+2R_{a c b d} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k}+2R_{a c b d} V_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} n^{c}-2X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{e}{R_{a c b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a c b e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-2X^{i}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a e b c}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{l}-X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\nabla_{c}{R_{a d b e}} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}-2R_{a c b d} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{d}\\,_{j}-4R_{a c b d} X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k} e^{d}\\,_{j}-4R_{a c b d} V_{0} X^{j}\\,_{0} e^{d}\\,_{j} n^{c}-2R_{a c b d} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{d}\\,_{k}-2R_{a c b d} V_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} n^{d}-2R_{a c b d} X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{j} e^{d}\\,_{k}-2R_{a c b d} V_{0} X^{j}\\,_{0} e^{c}\\,_{j} n^{d}\\end{dmath*}"
+				}
+			],
+			"source": "unzoom(Deps3KCL);"
+		},
+		{
+			"cell_id": 1594753347849577339,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 8876304712508772541,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 5182547040992124182,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " ... -2X^{k}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{k} e^{e}_{l} + 2R_{a c b d} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} + 2R_{a c b d} V_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) n^{c} +  ... -X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a c b e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-2X^{i}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a e b c}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{l} +  ... -2R_{a c b d} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{d}_{k}-2R_{a c b d} V_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) n^{d} +  ... "
+						}
+					],
+					"source": "\\begin{dmath*}{} \\ldots -2X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l}+2R_{a c b d} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k}+2R_{a c b d} V_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} n^{c}+ \\ldots -X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a c b e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-2X^{i}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a e b c}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{l}+ \\ldots -2R_{a c b d} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{d}\\,_{k}-2R_{a c b d} V_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} n^{d}+ \\ldots \\end{dmath*}"
+				}
+			],
+			"source": "zoom(Deps3KCL, $\\partial_{\\epsilon}{U_{0}} Q??$);"
+		},
+		{
+			"cell_id": 17095570989858643719,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 13799957165216681335,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 9253532661492736213,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-2X^{k}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{k} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l} -> -3X^{k}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{k} e^{e}_{l}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-2X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l} \\rightarrow -3X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l}\\end{dmath*}"
+				}
+			],
+			"source": "D3Ksubs4 := - 2 \\nabla_{b}{R_{a d c e}} \\dot{z}^{c} e^{d}_{k} X^{k}_{0} e^{e}_{l} X^{l}_{0}\n\\partial_{\\epsilon}{U_{0}} - \\nabla_{b}{R_{a d c e}} \\dot{z}^{c} e^{d}_{j} X^{j}_{0} \ne^{e}_{l} X^{l}_{0} \\partial_{\\epsilon}{U_{0}} -> - 3 \\nabla_{b}{R_{a d c e}} \\dot{z}^{c} \ne^{d}_{k} X^{k}_{0} e^{e}_{l} X^{l}_{0} \\partial_{\\epsilon}{U_{0}};"
+		},
+		{
+			"cell_id": 16951245497871262638,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 4191706144087541336,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 11067531563973756069,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " ... -3X^{k}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{k} e^{e}_{l} + 2R_{a c b d} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} + 2R_{a c b d} V_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) n^{c} +  ... -X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a c b e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-2X^{i}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a e b c}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{l} +  ... -2R_{a c b d} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{d}_{k}-2R_{a c b d} V_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) n^{d} +  ... "
+						}
+					],
+					"source": "\\begin{dmath*}{} \\ldots -3X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l}+2R_{a c b d} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k}+2R_{a c b d} V_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} n^{c}+ \\ldots -X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a c b e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-2X^{i}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a e b c}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{l}+ \\ldots -2R_{a c b d} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{d}\\,_{k}-2R_{a c b d} V_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} n^{d}+ \\ldots \\end{dmath*}"
+				}
+			],
+			"source": "substitute(Deps3KCL, D3Ksubs4);"
+		},
+		{
+			"cell_id": 4270814751161024408,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 12242416741218058815,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 15219096843280311867,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "2X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k}-2X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k} + 2R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{k}-3X^{k}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{k} e^{e}_{l} + 2R_{a c b d} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} + 2R_{a c b d} V_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) n^{c}-2X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{e}(R_{a c b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a c b e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-2X^{i}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a e b c}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{l}-X^{i}_{0} X^{j}_{0} X^{l}_{0} \\nabla_{c}(R_{a d b e}) e^{c}_{i} e^{d}_{j} e^{e}_{l}-2R_{a c b d} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{d}_{j}-4R_{a c b d} X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} e^{d}_{j}-4R_{a c b d} V_{0} X^{j}_{0} e^{d}_{j} n^{c}-2R_{a c b d} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{d}_{k}-2R_{a c b d} V_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) n^{d}-2R_{a c b d} X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{j} e^{d}_{k}-2R_{a c b d} V_{0} X^{j}_{0} e^{c}_{j} n^{d}"
+						}
+					],
+					"source": "\\begin{dmath*}{}2X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}-2X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}+2R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{k}-3X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l}+2R_{a c b d} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k}+2R_{a c b d} V_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} n^{c}-2X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{e}{R_{a c b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a c b e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-2X^{i}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a e b c}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{l}-X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\nabla_{c}{R_{a d b e}} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}-2R_{a c b d} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{d}\\,_{j}-4R_{a c b d} X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k} e^{d}\\,_{j}-4R_{a c b d} V_{0} X^{j}\\,_{0} e^{d}\\,_{j} n^{c}-2R_{a c b d} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{d}\\,_{k}-2R_{a c b d} V_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} n^{d}-2R_{a c b d} X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{j} e^{d}\\,_{k}-2R_{a c b d} V_{0} X^{j}\\,_{0} e^{c}\\,_{j} n^{d}\\end{dmath*}"
+				}
+			],
+			"source": "unzoom(Deps3KCL);"
+		},
+		{
+			"cell_id": 3065760331716000390,
+			"cell_origin": "client",
+			"cell_type": "latex",
+			"cells": [
+				{
+					"cell_id": 11259140136844473879,
+					"cell_origin": "client",
+					"cell_type": "latex_view",
+					"source": "Now that we have computed $[D^{3}_{\\epsilon} K_{a' b}]$, we can compute \n$[D^{3}_{\\epsilon} \\partial_{s} Y_{a'}] = [D^{3}_{\\epsilon} K_{a' b}] \\dot{z}^{b} \n[\\partial_{s} U] + 3 [D^{2}_{\\epsilon} K_{a' b}] \\dot{z}^{b} [\\partial_{\\epsilon s} U]\n+ \\dot{z}_{a} [\\partial_{\\epsilon \\epsilon \\epsilon s} U] + 3 [D^{2}_{\\epsilon} H_{a' b}]\ne^{b}_{i} [\\partial_{s} X^{i}] + 3 e_{a i} [\\partial_{\\epsilon \\epsilon s} X^{i}]\n+ 6 n_{a} [\\partial_{\\epsilon s} V]$. So we first need to compute \n$[D^{2}_{\\epsilon} H_{a' b}]$."
+				}
+			],
+			"source": "Now that we have computed $[D^{3}_{\\epsilon} K_{a' b}]$, we can compute \n$[D^{3}_{\\epsilon} \\partial_{s} Y_{a'}] = [D^{3}_{\\epsilon} K_{a' b}] \\dot{z}^{b} \n[\\partial_{s} U] + 3 [D^{2}_{\\epsilon} K_{a' b}] \\dot{z}^{b} [\\partial_{\\epsilon s} U]\n+ \\dot{z}_{a} [\\partial_{\\epsilon \\epsilon \\epsilon s} U] + 3 [D^{2}_{\\epsilon} H_{a' b}]\ne^{b}_{i} [\\partial_{s} X^{i}] + 3 e_{a i} [\\partial_{\\epsilon \\epsilon s} X^{i}]\n+ 6 n_{a} [\\partial_{\\epsilon s} V]$. So we first need to compute \n$[D^{2}_{\\epsilon} H_{a' b}]$."
+		},
+		{
+			"cell_id": 12166276945465281287,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 4814054932706395074,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 4437076544024806756,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\dot(z)^{c} \\dot(z)^{d} \\nabla_{c d}(H_{a' b}) \\partial_{\\epsilon}(U_{0})^{2} + 2\\dot(z)^{c} \\nabla_{d' c}(H_{a' b}) \\partial_{\\epsilon}(U_{0}) \\xi^{d'} + \\nabla_{c' d'}(H_{a' b}) \\xi^{c'} \\xi^{d'}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c d}{H_{a' b}} \\partial_{\\epsilon}{U_{0}}\\,^{2}+2\\dot{z}\\,^{c} \\nabla_{d' c}{H_{a' b}} \\partial_{\\epsilon}{U_{0}} \\xi^{d'}+\\nabla_{c' d'}{H_{a' b}} \\xi^{c'} \\xi^{d'}\\end{dmath*}"
+				}
+			],
+			"source": "Deps2HCL := \\nabla_{d c}{H_{a' b}} \\dot{z}^{c} \\dot{z}^{d} \\partial_{\\epsilon}{U_{0}}^{2} \n+ 2 \\nabla_{d' c}{H_{a' b}} \\dot{z}^{c} \\xi^{d'} \\partial_{\\epsilon}{U_{0}} \n+ \\nabla_{d' c'}{H_{a' b}} \\xi^{c'} \\xi^{d'};"
+		},
+		{
+			"cell_id": 9839235251605789370,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 5295275820475003042,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 17934107910210831841,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\dot(z)^{c} \\dot(z)^{d} \\nabla_{c d}(H_{a' b}) \\partial_{\\epsilon}(U_{0})^{2} ->  1/3 \\dot(z)^{c} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0})^{2} (R_{a b c d}-R_{a d b c})"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c d}{H_{a' b}} \\partial_{\\epsilon}{U_{0}}\\,^{2} \\rightarrow \\frac{1}{3}\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}\\,^{2} \\left(R_{a b c d}-R_{a d b c}\\right)\\end{dmath*}"
+				},
+				{
+					"cell_id": 1334231633843311336,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 10094798860402202922,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\dot(z)^{c} \\nabla_{d' c}(H_{a' b}) \\partial_{\\epsilon}(U_{0}) \\xi^{d'} ->  -  1/3 \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) (R_{a b c d}-R_{a d b c}) (\\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) + X^{k}_{0} e^{d}_{k})"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\dot{z}\\,^{c} \\nabla_{d' c}{H_{a' b}} \\partial_{\\epsilon}{U_{0}} \\xi^{d'} \\rightarrow  - \\frac{1}{3}\\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\left(R_{a b c d}-R_{a d b c}\\right) \\left(\\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}+X^{k}\\,_{0} e^{d}\\,_{k}\\right)\\end{dmath*}"
+				},
+				{
+					"cell_id": 14040138535591405042,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 3230463821237658548,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\nabla_{c' d'}(H_{a' b}) \\xi^{c'} \\xi^{d'} ->  1/3 (-R_{a b c d}-R_{a c b d}) (\\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) + X^{i}_{0} e^{c}_{i}) (\\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) + X^{k}_{0} e^{d}_{k})"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\nabla_{c' d'}{H_{a' b}} \\xi^{c'} \\xi^{d'} \\rightarrow \\frac{1}{3}\\left(-R_{a b c d}-R_{a c b d}\\right) \\left(\\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}}+X^{i}\\,_{0} e^{c}\\,_{i}\\right) \\left(\\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}+X^{k}\\,_{0} e^{d}\\,_{k}\\right)\\end{dmath*}"
+				}
+			],
+			"source": "D2Hsubs1 := \\nabla_{d c}{H_{a' b}} \\dot{z}^{c} \\dot{z}^{d} \\partial_{\\epsilon}{U_{0}}^{2} \n-> (1/3)( R_{a b c d} + R_{a d c b} ) \\dot{z}^{c} \\dot{z}^{d} \\partial_{\\epsilon}{U_{0}}^{2};\nD2Hsubs2 := \\nabla_{d' c}{H_{a' b}} \\dot{z}^{c} \\xi^{d'} \\partial_{\\epsilon}{U_{0}} \n-> -(1/3) ( R_{a b c d} + R_{a d c b} ) \\dot{z}^{c} ( \\dot{z}^{d} \\partial_{\\epsilon}{U_{0}} \n+ e^{d}_{k} X^{k}_{0} ) \\partial_{\\epsilon}{U_{0}};\nD2Hsubs3 := \\nabla_{d' c'}{H_{a' b}} \\xi^{c'} \\xi^{d'} -> (1/3) ( R_{a b d c} + R_{a c d b}) \n( \\dot{z}^{c} \\partial_{\\epsilon}{U_{0}} + e^{c}_{i} X^{i}_{0} ) ( \\dot{z}^{d} \n\\partial_{\\epsilon}{U_{0}} + e^{d}_{k} X^{k}_{0} );"
+		},
+		{
+			"cell_id": 14362282239736750673,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 9181134531624627866,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 9188140910966164707,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " 1/3 \\dot(z)^{c} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0})^{2} (R_{a b c d}-R_{a d b c}) -  2/3 \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) (R_{a b c d}-R_{a d b c}) (\\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) + X^{k}_{0} e^{d}_{k}) +  1/3 (-R_{a b c d}-R_{a c b d}) (\\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) + X^{i}_{0} e^{c}_{i}) (\\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) + X^{k}_{0} e^{d}_{k})"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\frac{1}{3}\\dot{z}\\,^{c} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}\\,^{2} \\left(R_{a b c d}-R_{a d b c}\\right) - \\frac{2}{3}\\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\left(R_{a b c d}-R_{a d b c}\\right) \\left(\\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}+X^{k}\\,_{0} e^{d}\\,_{k}\\right)+\\frac{1}{3}\\left(-R_{a b c d}-R_{a c b d}\\right) \\left(\\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}}+X^{i}\\,_{0} e^{c}\\,_{i}\\right) \\left(\\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}+X^{k}\\,_{0} e^{d}\\,_{k}\\right)\\end{dmath*}"
+				},
+				{
+					"cell_id": 3578656025684368293,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 6301805309596062898,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-R_{a b c d} X^{k}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) e^{d}_{k} +  2/3 R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) e^{c}_{k} +  1/3 R_{a b c d} X^{i}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) e^{d}_{i} -  1/3 R_{a c b d} X^{k}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) e^{d}_{k} -  1/3 R_{a c b d} X^{i}_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) e^{c}_{i} -  1/3 R_{a c b d} X^{i}_{0} X^{k}_{0} e^{c}_{i} e^{d}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-R_{a b c d} X^{k}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k}+\\frac{2}{3}R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} e^{c}\\,_{k}+\\frac{1}{3}R_{a b c d} X^{i}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} - \\frac{1}{3}R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} - \\frac{1}{3}R_{a c b d} X^{i}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} e^{c}\\,_{i} - \\frac{1}{3}R_{a c b d} X^{i}\\,_{0} X^{k}\\,_{0} e^{c}\\,_{i} e^{d}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(Deps2HCL, D2Hsubs1),\nsubstitute(Deps2HCL, D2Hsubs2),\nsubstitute(Deps2HCL, D2Hsubs3);\ndistribute(_),\nsubstitute(Deps2HCL, depsU0square);"
+		},
+		{
+			"cell_id": 10261388896447821239,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 13065980718731504687,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 11313253608868250595,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-R_{a b c d} X^{k}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) e^{d}_{k} +  1/3 R_{a b c d} X^{i}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) e^{d}_{i} ->  -  2/3 R_{a b c d} X^{k}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) e^{d}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-R_{a b c d} X^{k}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k}+\\frac{1}{3}R_{a b c d} X^{i}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} \\rightarrow  - \\frac{2}{3}R_{a b c d} X^{k}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k}\\end{dmath*}"
+				},
+				{
+					"cell_id": 17466289175096809022,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 6123150305188974075,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " 2/3 R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) e^{c}_{k} -  1/3 R_{a c b d} X^{i}_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) e^{c}_{i} ->  1/3 R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) e^{c}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\frac{2}{3}R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} e^{c}\\,_{k} - \\frac{1}{3}R_{a c b d} X^{i}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} e^{c}\\,_{i} \\rightarrow \\frac{1}{3}R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} e^{c}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "D2Hsubs4 := - R_{a b c d} \\dot{z}^{c} e^{d}_{k} X^{k}_{0} \\partial_{\\epsilon}{U_{0}}\n+ (1/3) R_{a b c d} \\dot{z}^{c} e^{d}_{i} X^{i}_{0} \\partial_{\\epsilon}{U_{0}} \n-> - (2/3) R_{a b c d} \\dot{z}^{c} e^{d}_{k} X^{k}_{0} \\partial_{\\epsilon}{U_{0}};\nD2Hsubs5 := (2/3) R_{a c b d} e^{c}_{k} X^{k}_{0} \\dot{z}^{d} \\partial_{\\epsilon}{U_{0}}\n- (1/3) R_{a c b d} e^{c}_{i} X^{i}_{0} \\dot{z}^{d} \\partial_{\\epsilon}{U_{0}} \n-> (1/3) R_{a c b d} e^{c}_{k} X^{k}_{0} \\dot{z}^{d} \\partial_{\\epsilon}{U_{0}};"
+		},
+		{
+			"cell_id": 12841308816366810765,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 15490382505258903299,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 6466537773190269936,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " -  2/3 R_{a b c d} X^{k}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) e^{d}_{k} +  2/3 R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) e^{c}_{k} -  1/3 R_{a c b d} X^{k}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) e^{d}_{k} -  1/3 R_{a c b d} X^{i}_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) e^{c}_{i} -  1/3 R_{a c b d} X^{i}_{0} X^{k}_{0} e^{c}_{i} e^{d}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{} - \\frac{2}{3}R_{a b c d} X^{k}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k}+\\frac{2}{3}R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} e^{c}\\,_{k} - \\frac{1}{3}R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} - \\frac{1}{3}R_{a c b d} X^{i}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} e^{c}\\,_{i} - \\frac{1}{3}R_{a c b d} X^{i}\\,_{0} X^{k}\\,_{0} e^{c}\\,_{i} e^{d}\\,_{k}\\end{dmath*}"
+				},
+				{
+					"cell_id": 18295757903764052246,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 18280860982284450333,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " -  2/3 R_{a b c d} X^{k}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) e^{d}_{k} +  1/3 R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) e^{c}_{k} -  1/3 R_{a c b d} X^{k}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) e^{d}_{k} -  1/3 R_{a c b d} X^{i}_{0} X^{k}_{0} e^{c}_{i} e^{d}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{} - \\frac{2}{3}R_{a b c d} X^{k}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k}+\\frac{1}{3}R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} e^{c}\\,_{k} - \\frac{1}{3}R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} - \\frac{1}{3}R_{a c b d} X^{i}\\,_{0} X^{k}\\,_{0} e^{c}\\,_{i} e^{d}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(Deps2HCL, D2Hsubs4);\nsubstitute(Deps2HCL, D2Hsubs5);"
+		},
+		{
+			"cell_id": 14219939187750159564,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 16179825908394139287,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 7904412517771658701,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-R_{a b c d} X^{k}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) e^{d}_{k} -  1/3 R_{a c b d} X^{i}_{0} X^{k}_{0} e^{c}_{i} e^{d}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-R_{a b c d} X^{k}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} - \\frac{1}{3}R_{a c b d} X^{i}\\,_{0} X^{k}\\,_{0} e^{c}\\,_{i} e^{d}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "meld(_);"
+		},
+		{
+			"cell_id": 15696454766152790604,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 7684875570808752875,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 6913681798257271588,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-R_{a b c d} X^{k}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) e^{d}_{k} -  1/3 R_{a c b d} X^{i}_{0} X^{k}_{0} e^{c}_{i} e^{d}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-R_{a b c d} X^{k}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} - \\frac{1}{3}R_{a c b d} X^{i}\\,_{0} X^{k}\\,_{0} e^{c}\\,_{i} e^{d}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "Deps2HCL;"
+		},
+		{
+			"cell_id": 3409137054631875014,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 8252777786063156199,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 4945463705634193792,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\dot(z)^{b} \\nabla_{\\epsilon \\epsilon \\epsilon}(K_{a' b}) \\partial_{s}(U_{0}) + 3\\dot(z)^{b} \\nabla_{\\epsilon \\epsilon}(K_{a' b}) \\partial_{s \\epsilon}(U_{0}) + \\dot(z)_{a'} \\partial_{s \\epsilon \\epsilon \\epsilon}(U_{0}) + 3\\nabla_{\\epsilon \\epsilon}(H_{a' b}) \\partial_{s}(X^{i}_{0}) e^{b}_{i} + 3\\partial_{s \\epsilon \\epsilon}(X^{i}_{0}) e_{a' i} + 6\\partial_{\\epsilon s}(V_{0}) n_{a'}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\dot{z}\\,^{b} \\nabla_{\\epsilon \\epsilon \\epsilon}{K_{a' b}} \\partial_{s}{U_{0}}+3\\dot{z}\\,^{b} \\nabla_{\\epsilon \\epsilon}{K_{a' b}} \\partial_{s \\epsilon}{U_{0}}+\\dot{z}\\,_{a'} \\partial_{s \\epsilon \\epsilon \\epsilon}{U_{0}}+3\\nabla_{\\epsilon \\epsilon}{H_{a' b}} \\partial_{s}{X^{i}\\,_{0}} e^{b}\\,_{i}+3\\partial_{s \\epsilon \\epsilon}{X^{i}\\,_{0}} e_{a' i}+6\\partial_{\\epsilon s}{V_{0}} n_{a'}\\end{dmath*}"
+				}
+			],
+			"source": "Deps3dsYCL := \\nabla_{\\epsilon \\epsilon \\epsilon}{K_{a' b}} \\dot{z}^{b} \\partial_{s}{U_{0}}\n+ 3 \\nabla_{\\epsilon \\epsilon}{K_{a' b}} \\dot{z}^{b} \\partial_{\\epsilon s}{U_{0}}\n+ \\dot{z}_{a'} \\partial_{\\epsilon \\epsilon \\epsilon s}{U_{0}}\n+ 3 \\nabla_{\\epsilon \\epsilon}{H_{a' b}} e^{b}_{i} \\partial_{s}{X^{i}_{0}}\n+ 3 e_{a' i} \\partial_{\\epsilon \\epsilon s}{X^{i}_{0}} \n+ 6 n_{a'} \\partial_{\\epsilon s}{V_{0}};"
+		},
+		{
+			"cell_id": 18292041428149214973,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 917681029628899684,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 6138276685851287726,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\dot(z)_{a'} -> \\dot(z)_{a}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\dot{z}\\,_{a'} \\rightarrow \\dot{z}\\,_{a}\\end{dmath*}"
+				},
+				{
+					"cell_id": 139101460643009420,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 11579989411503924558,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "n_{a'} -> n_{a}"
+						}
+					],
+					"source": "\\begin{dmath*}{}n_{a'} \\rightarrow n_{a}\\end{dmath*}"
+				},
+				{
+					"cell_id": 13552281597106690648,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 15771658211061048196,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "e_{a' i} -> e_{a i}"
+						}
+					],
+					"source": "\\begin{dmath*}{}e_{a' i} \\rightarrow e_{a i}\\end{dmath*}"
+				}
+			],
+			"source": "indexsubs1 := \\dot{z}_{a'} -> \\dot{z}_{a};\nindexsubs2 := n_{a'} -> n_{a};\nindexsubs3 := e_{a' i} -> e_{a i};"
+		},
+		{
+			"cell_id": 14770940928514387000,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 12598179142042601744,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 14166039521609947776,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\dot(z)^{b} \\nabla_{\\epsilon \\epsilon \\epsilon}(K_{a' b}) \\partial_{s}(U_{0}) + 3\\dot(z)^{b} \\nabla_{\\epsilon \\epsilon}(K_{a' b}) \\partial_{s \\epsilon}(U_{0}) + \\dot(z)_{a} \\partial_{s \\epsilon \\epsilon \\epsilon}(U_{0}) + 3\\nabla_{\\epsilon \\epsilon}(H_{a' b}) \\partial_{s}(X^{i}_{0}) e^{b}_{i} + 3\\partial_{s \\epsilon \\epsilon}(X^{i}_{0}) e_{a i} + 6\\partial_{\\epsilon s}(V_{0}) n_{a}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\dot{z}\\,^{b} \\nabla_{\\epsilon \\epsilon \\epsilon}{K_{a' b}} \\partial_{s}{U_{0}}+3\\dot{z}\\,^{b} \\nabla_{\\epsilon \\epsilon}{K_{a' b}} \\partial_{s \\epsilon}{U_{0}}+\\dot{z}\\,_{a} \\partial_{s \\epsilon \\epsilon \\epsilon}{U_{0}}+3\\nabla_{\\epsilon \\epsilon}{H_{a' b}} \\partial_{s}{X^{i}\\,_{0}} e^{b}\\,_{i}+3\\partial_{s \\epsilon \\epsilon}{X^{i}\\,_{0}} e_{a i}+6\\partial_{\\epsilon s}{V_{0}} n_{a}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(Deps3dsYCL, indexsubs1),\nsubstitute(Deps3dsYCL, indexsubs2),\nsubstitute(Deps3dsYCL, indexsubs3);"
+		},
+		{
+			"cell_id": 13106667587063722613,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 16792067344189727840,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 15745544379613517253,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\nabla_{\\epsilon \\epsilon \\epsilon}(K_{a' b}) -> 2X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k}-2X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k} + 2R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{k}-3X^{k}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{k} e^{e}_{l} + 2R_{a c b d} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} + 2R_{a c b d} V_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) n^{c}-2X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{e}(R_{a c b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a c b e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-2X^{i}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a e b c}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{l}-X^{i}_{0} X^{j}_{0} X^{l}_{0} \\nabla_{c}(R_{a d b e}) e^{c}_{i} e^{d}_{j} e^{e}_{l}-2R_{a c b d} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{d}_{j}-4R_{a c b d} X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} e^{d}_{j}-4R_{a c b d} V_{0} X^{j}_{0} e^{d}_{j} n^{c}-2R_{a c b d} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{d}_{k}-2R_{a c b d} V_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) n^{d}-2R_{a c b d} X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{j} e^{d}_{k}-2R_{a c b d} V_{0} X^{j}_{0} e^{c}_{j} n^{d}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\nabla_{\\epsilon \\epsilon \\epsilon}{K_{a' b}} \\rightarrow 2X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}-2X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}+2R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{k}-3X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l}+2R_{a c b d} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k}+2R_{a c b d} V_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} n^{c}-2X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{e}{R_{a c b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a c b e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-2X^{i}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a e b c}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{l}-X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\nabla_{c}{R_{a d b e}} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}-2R_{a c b d} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{d}\\,_{j}-4R_{a c b d} X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k} e^{d}\\,_{j}-4R_{a c b d} V_{0} X^{j}\\,_{0} e^{d}\\,_{j} n^{c}-2R_{a c b d} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{d}\\,_{k}-2R_{a c b d} V_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} n^{d}-2R_{a c b d} X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{j} e^{d}\\,_{k}-2R_{a c b d} V_{0} X^{j}\\,_{0} e^{c}\\,_{j} n^{d}\\end{dmath*}"
+				},
+				{
+					"cell_id": 9624969900820997239,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 719513643709852567,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\nabla_{\\epsilon \\epsilon}(K_{a' b}) -> -R_{a c b d} \\dot(z)^{c} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0})^{2}-2R_{a d c b} \\dot(z)^{c} (\\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) + X^{i}_{0} e^{d}_{i}) + R_{a c d b} (\\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) + X^{j}_{0} e^{c}_{j}) (\\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) + X^{i}_{0} e^{d}_{i})"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\nabla_{\\epsilon \\epsilon}{K_{a' b}} \\rightarrow -R_{a c b d} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}\\,^{2}-2R_{a d c b} \\dot{z}\\,^{c} \\left(\\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}+X^{i}\\,_{0} e^{d}\\,_{i}\\right)+R_{a c d b} \\left(\\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}}+X^{j}\\,_{0} e^{c}\\,_{j}\\right) \\left(\\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}+X^{i}\\,_{0} e^{d}\\,_{i}\\right)\\end{dmath*}"
+				},
+				{
+					"cell_id": 6107340642880378868,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 14921213204723794780,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\nabla_{\\epsilon \\epsilon}(H_{a' b}) -> -R_{a b c d} X^{k}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) e^{d}_{k} -  1/3 R_{a c b d} X^{i}_{0} X^{k}_{0} e^{c}_{i} e^{d}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\nabla_{\\epsilon \\epsilon}{H_{a' b}} \\rightarrow -R_{a b c d} X^{k}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} - \\frac{1}{3}R_{a c b d} X^{i}\\,_{0} X^{k}\\,_{0} e^{c}\\,_{i} e^{d}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "D4Ysubs1 := \\nabla_{\\epsilon \\epsilon \\epsilon}{K_{a' b}} -> @(Deps3KCL);\nD4Ysubs2 := \\nabla_{\\epsilon \\epsilon}{K_{a' b}} -> R_{a d c b} \\dot{z}^{c}\n\\dot{z}^{d} \\partial_{\\epsilon}{U_{0}}^{2} - 2 R_{a d c b} \\dot{z}^{c}\n( \\dot{z}^{d} \\partial_{\\epsilon}{U_{0}} + e^{d}_{i} X^{i}_{0} )\n+ R_{a c d b} ( \\dot{z}^{c} \\partial_{\\epsilon}{U_{0}} + e^{c}_{j} X^{j}_{0} )\n( \\dot{z}^{d} \\partial_{\\epsilon}{U_{0}} + e^{d}_{i} X^{i}_{0} );\nD4Ysubs3 := \\nabla_{\\epsilon \\epsilon}{H_{a' b}} -> @(Deps2HCL);"
+		},
+		{
+			"cell_id": 13950576588198312657,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 9798830141116130888,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 13554323954856881354,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\dot(z)^{b} \\partial_{s}(U_{0}) (2X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{c}(R_{a e b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k}-2X^{k}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k} + 2R_{a c b d} X^{k}_{0} \\dot(z)^{d} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{c}_{k}-3X^{k}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{k} e^{e}_{l} + 2R_{a c b d} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} + 2R_{a c b d} V_{0} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) n^{c}-2X^{l}_{0} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{e}(R_{a c b d}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a c b e}) \\partial_{\\epsilon}(U_{0}) e^{d}_{j} e^{e}_{l}-2X^{i}_{0} X^{l}_{0} \\dot(z)^{c} \\nabla_{d}(R_{a e b c}) \\partial_{\\epsilon}(U_{0}) e^{d}_{i} e^{e}_{l}-X^{i}_{0} X^{j}_{0} X^{l}_{0} \\nabla_{c}(R_{a d b e}) e^{c}_{i} e^{d}_{j} e^{e}_{l}-2R_{a c b d} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon \\epsilon}(U_{0}) e^{d}_{j}-4R_{a c b d} X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{k} e^{d}_{j}-4R_{a c b d} V_{0} X^{j}_{0} e^{d}_{j} n^{c}-2R_{a c b d} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) e^{d}_{k}-2R_{a c b d} V_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) n^{d}-2R_{a c b d} X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{c}_{j} e^{d}_{k}-2R_{a c b d} V_{0} X^{j}_{0} e^{c}_{j} n^{d}) + 3\\dot(z)^{b} \\partial_{s \\epsilon}(U_{0}) (-R_{a c b d} \\dot(z)^{c} \\dot(z)^{d} \\partial_{\\epsilon}(U_{0})^{2}-2R_{a d c b} \\dot(z)^{c} (\\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) + X^{i}_{0} e^{d}_{i}) + R_{a c d b} (\\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) + X^{j}_{0} e^{c}_{j}) (\\dot(z)^{d} \\partial_{\\epsilon}(U_{0}) + X^{i}_{0} e^{d}_{i})) + \\dot(z)_{a} \\partial_{s \\epsilon \\epsilon \\epsilon}(U_{0}) + 3\\partial_{s}(X^{i}_{0}) (-R_{a b c d} X^{k}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) e^{d}_{k} -  1/3 R_{a c b d} X^{j}_{0} X^{k}_{0} e^{c}_{j} e^{d}_{k}) e^{b}_{i} + 3\\partial_{s \\epsilon \\epsilon}(X^{i}_{0}) e_{a i} + 6\\partial_{\\epsilon s}(V_{0}) n_{a}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\dot{z}\\,^{b} \\partial_{s}{U_{0}} \\left(2X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{c}{R_{a e b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}-2X^{k}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}+2R_{a c b d} X^{k}\\,_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{c}\\,_{k}-3X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l}+2R_{a c b d} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k}+2R_{a c b d} V_{0} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}} n^{c}-2X^{l}\\,_{0} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{e}{R_{a c b d}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a c b e}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-2X^{i}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{c} \\nabla_{d}{R_{a e b c}} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{i} e^{e}\\,_{l}-X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\nabla_{c}{R_{a d b e}} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}-2R_{a c b d} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{d}\\,_{j}-4R_{a c b d} X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{k} e^{d}\\,_{j}-4R_{a c b d} V_{0} X^{j}\\,_{0} e^{d}\\,_{j} n^{c}-2R_{a c b d} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{d}\\,_{k}-2R_{a c b d} V_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} n^{d}-2R_{a c b d} X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{c}\\,_{j} e^{d}\\,_{k}-2R_{a c b d} V_{0} X^{j}\\,_{0} e^{c}\\,_{j} n^{d}\\right)+3\\dot{z}\\,^{b} \\partial_{s \\epsilon}{U_{0}} \\left(-R_{a c b d} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}\\,^{2}-2R_{a d c b} \\dot{z}\\,^{c} \\left(\\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}+X^{i}\\,_{0} e^{d}\\,_{i}\\right)+R_{a c d b} \\left(\\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}}+X^{j}\\,_{0} e^{c}\\,_{j}\\right) \\left(\\dot{z}\\,^{d} \\partial_{\\epsilon}{U_{0}}+X^{i}\\,_{0} e^{d}\\,_{i}\\right)\\right)+\\dot{z}\\,_{a} \\partial_{s \\epsilon \\epsilon \\epsilon}{U_{0}}+3\\partial_{s}{X^{i}\\,_{0}} \\left(-R_{a b c d} X^{k}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} e^{d}\\,_{k} - \\frac{1}{3}R_{a c b d} X^{j}\\,_{0} X^{k}\\,_{0} e^{c}\\,_{j} e^{d}\\,_{k}\\right) e^{b}\\,_{i}+3\\partial_{s \\epsilon \\epsilon}{X^{i}\\,_{0}} e_{a i}+6\\partial_{\\epsilon s}{V_{0}} n_{a}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(Deps3dsYCL, D4Ysubs1),\nsubstitute(Deps3dsYCL, D4Ysubs2),\nsubstitute(Deps3dsYCL, D4Ysubs3);"
+		},
+		{
+			"cell_id": 13113358379240325040,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 11229299894325187878,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 11562254822478890989,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-2X^{k}_{0} \\dot(z)^{b} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{s}(U_{0}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k}-3X^{k}_{0} X^{l}_{0} \\dot(z)^{b} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) e^{d}_{k} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{b} \\dot(z)^{c} \\nabla_{d}(R_{a b c e}) \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) e^{d}_{j} e^{e}_{l}-X^{i}_{0} X^{j}_{0} X^{l}_{0} \\dot(z)^{b} \\nabla_{c}(R_{a d b e}) \\partial_{s}(U_{0}) e^{c}_{i} e^{d}_{j} e^{e}_{l}-2R_{a b c d} X^{j}_{0} \\dot(z)^{b} \\dot(z)^{c} \\partial_{s}(U_{0}) \\partial_{\\epsilon \\epsilon}(U_{0}) e^{d}_{j}-4R_{a b c d} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(X^{k}_{0}) \\partial_{s}(U_{0}) e^{b}_{k} e^{d}_{j}-4R_{a b c d} V_{0} X^{j}_{0} \\dot(z)^{c} \\partial_{s}(U_{0}) e^{d}_{j} n^{b}-2R_{a b c d} \\dot(z)^{b} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) \\partial_{s}(U_{0}) e^{d}_{k}-2R_{a b c d} V_{0} \\dot(z)^{b} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) n^{d}-2R_{a b c d} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(X^{k}_{0}) \\partial_{s}(U_{0}) e^{b}_{j} e^{d}_{k}-2R_{a b c d} V_{0} X^{j}_{0} \\dot(z)^{c} \\partial_{s}(U_{0}) e^{b}_{j} n^{d}-3R_{a b c d} X^{i}_{0} \\dot(z)^{b} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s \\epsilon}(U_{0}) e^{d}_{i}-3R_{a b c d} X^{i}_{0} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon s}(U_{0}) e^{b}_{i} e^{d}_{j} + \\dot(z)_{a} \\partial_{s \\epsilon \\epsilon \\epsilon}(U_{0})-3R_{a b c d} X^{i}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s}(X^{k}_{0}) e^{b}_{k} e^{d}_{i} + R_{a b c d} X^{i}_{0} X^{j}_{0} \\partial_{s}(X^{k}_{0}) e^{b}_{i} e^{c}_{j} e^{d}_{k} + 3\\partial_{s \\epsilon \\epsilon}(X^{i}_{0}) e_{a i} + 6\\partial_{\\epsilon s}(V_{0}) n_{a}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-2X^{k}\\,_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{s}{U_{0}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}-3X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\nabla_{d}{R_{a b c e}} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{b} \\nabla_{c}{R_{a d b e}} \\partial_{s}{U_{0}} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}-2R_{a b c d} X^{j}\\,_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{d}\\,_{j}-4R_{a b c d} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{X^{k}\\,_{0}} \\partial_{s}{U_{0}} e^{b}\\,_{k} e^{d}\\,_{j}-4R_{a b c d} V_{0} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} e^{d}\\,_{j} n^{b}-2R_{a b c d} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} \\partial_{s}{U_{0}} e^{d}\\,_{k}-2R_{a b c d} V_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} n^{d}-2R_{a b c d} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{X^{k}\\,_{0}} \\partial_{s}{U_{0}} e^{b}\\,_{j} e^{d}\\,_{k}-2R_{a b c d} V_{0} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} e^{b}\\,_{j} n^{d}-3R_{a b c d} X^{i}\\,_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s \\epsilon}{U_{0}} e^{d}\\,_{i}-3R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon s}{U_{0}} e^{b}\\,_{i} e^{d}\\,_{j}+\\dot{z}\\,_{a} \\partial_{s \\epsilon \\epsilon \\epsilon}{U_{0}}-3R_{a b c d} X^{i}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{X^{k}\\,_{0}} e^{b}\\,_{k} e^{d}\\,_{i}+R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\partial_{s}{X^{k}\\,_{0}} e^{b}\\,_{i} e^{c}\\,_{j} e^{d}\\,_{k}+3\\partial_{s \\epsilon \\epsilon}{X^{i}\\,_{0}} e_{a i}+6\\partial_{\\epsilon s}{V_{0}} n_{a}\\end{dmath*}"
+				}
+			],
+			"source": "distribute(Deps3dsYCL);"
+		},
+		{
+			"cell_id": 6808404578006717258,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 9454493993784220624,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 17901308796737860362,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " 1/3 \\dot(z)^{a} \\nabla_{\\epsilon \\epsilon \\epsilon}(\\partial_{s}(Y_{a'})) \\partial_{s}(U_{0})"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\frac{1}{3}\\dot{z}\\,^{a} \\nabla_{\\epsilon \\epsilon \\epsilon}\\left(\\partial_{s}{Y_{a'}}\\right) \\partial_{s}{U_{0}}\\end{dmath*}"
+				}
+			],
+			"source": "Oeps3linT1 := (1/3) \\nabla_{\\epsilon \\epsilon \\epsilon}{\\partial_{s}{Y_{a'}}} \\dot{z}^{a}\n\\partial_{s}{U_{0}};"
+		},
+		{
+			"cell_id": 18141292279878446517,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 16121311986120916151,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 918095627535436754,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\nabla_{\\epsilon \\epsilon \\epsilon}(\\partial_{s}(Y_{a'})) -> -2X^{k}_{0} \\dot(z)^{b} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{s}(U_{0}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k}-3X^{k}_{0} X^{l}_{0} \\dot(z)^{b} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) e^{d}_{k} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{b} \\dot(z)^{c} \\nabla_{d}(R_{a b c e}) \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) e^{d}_{j} e^{e}_{l}-X^{i}_{0} X^{j}_{0} X^{l}_{0} \\dot(z)^{b} \\nabla_{c}(R_{a d b e}) \\partial_{s}(U_{0}) e^{c}_{i} e^{d}_{j} e^{e}_{l}-2R_{a b c d} X^{j}_{0} \\dot(z)^{b} \\dot(z)^{c} \\partial_{s}(U_{0}) \\partial_{\\epsilon \\epsilon}(U_{0}) e^{d}_{j}-4R_{a b c d} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(X^{k}_{0}) \\partial_{s}(U_{0}) e^{b}_{k} e^{d}_{j}-4R_{a b c d} V_{0} X^{j}_{0} \\dot(z)^{c} \\partial_{s}(U_{0}) e^{d}_{j} n^{b}-2R_{a b c d} \\dot(z)^{b} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) \\partial_{s}(U_{0}) e^{d}_{k}-2R_{a b c d} V_{0} \\dot(z)^{b} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) n^{d}-2R_{a b c d} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(X^{k}_{0}) \\partial_{s}(U_{0}) e^{b}_{j} e^{d}_{k}-2R_{a b c d} V_{0} X^{j}_{0} \\dot(z)^{c} \\partial_{s}(U_{0}) e^{b}_{j} n^{d}-3R_{a b c d} X^{i}_{0} \\dot(z)^{b} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s \\epsilon}(U_{0}) e^{d}_{i}-3R_{a b c d} X^{i}_{0} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon s}(U_{0}) e^{b}_{i} e^{d}_{j} + \\dot(z)_{a} \\partial_{s \\epsilon \\epsilon \\epsilon}(U_{0})-3R_{a b c d} X^{i}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s}(X^{k}_{0}) e^{b}_{k} e^{d}_{i} + R_{a b c d} X^{i}_{0} X^{j}_{0} \\partial_{s}(X^{k}_{0}) e^{b}_{i} e^{c}_{j} e^{d}_{k} + 3\\partial_{s \\epsilon \\epsilon}(X^{i}_{0}) e_{a i} + 6\\partial_{\\epsilon s}(V_{0}) n_{a}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\nabla_{\\epsilon \\epsilon \\epsilon}\\left(\\partial_{s}{Y_{a'}}\\right) \\rightarrow -2X^{k}\\,_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{s}{U_{0}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}-3X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\nabla_{d}{R_{a b c e}} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{b} \\nabla_{c}{R_{a d b e}} \\partial_{s}{U_{0}} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}-2R_{a b c d} X^{j}\\,_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{d}\\,_{j}-4R_{a b c d} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{X^{k}\\,_{0}} \\partial_{s}{U_{0}} e^{b}\\,_{k} e^{d}\\,_{j}-4R_{a b c d} V_{0} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} e^{d}\\,_{j} n^{b}-2R_{a b c d} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} \\partial_{s}{U_{0}} e^{d}\\,_{k}-2R_{a b c d} V_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} n^{d}-2R_{a b c d} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{X^{k}\\,_{0}} \\partial_{s}{U_{0}} e^{b}\\,_{j} e^{d}\\,_{k}-2R_{a b c d} V_{0} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} e^{b}\\,_{j} n^{d}-3R_{a b c d} X^{i}\\,_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s \\epsilon}{U_{0}} e^{d}\\,_{i}-3R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon s}{U_{0}} e^{b}\\,_{i} e^{d}\\,_{j}+\\dot{z}\\,_{a} \\partial_{s \\epsilon \\epsilon \\epsilon}{U_{0}}-3R_{a b c d} X^{i}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{X^{k}\\,_{0}} e^{b}\\,_{k} e^{d}\\,_{i}+R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\partial_{s}{X^{k}\\,_{0}} e^{b}\\,_{i} e^{c}\\,_{j} e^{d}\\,_{k}+3\\partial_{s \\epsilon \\epsilon}{X^{i}\\,_{0}} e_{a i}+6\\partial_{\\epsilon s}{V_{0}} n_{a}\\end{dmath*}"
+				}
+			],
+			"source": "Oeps3subs1 := \\nabla_{\\epsilon \\epsilon \\epsilon}{\\partial_{s}{Y_{a'}}} -> @(Deps3dsYCL);"
+		},
+		{
+			"cell_id": 18000831621022451229,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 14726199174935227579,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 14216258157290903916,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " 1/3 \\dot(z)^{a} \\partial_{s}(U_{0}) (-2X^{k}_{0} \\dot(z)^{b} \\dot(z)^{c} \\dot(z)^{d} \\nabla_{b}(R_{a c d e}) \\partial_{s}(U_{0}) \\partial_{\\epsilon}(U_{0})^{2} e^{e}_{k}-3X^{k}_{0} X^{l}_{0} \\dot(z)^{b} \\dot(z)^{c} \\nabla_{b}(R_{a d c e}) \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) e^{d}_{k} e^{e}_{l}-X^{j}_{0} X^{l}_{0} \\dot(z)^{b} \\dot(z)^{c} \\nabla_{d}(R_{a b c e}) \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) e^{d}_{j} e^{e}_{l}-X^{i}_{0} X^{j}_{0} X^{l}_{0} \\dot(z)^{b} \\nabla_{c}(R_{a d b e}) \\partial_{s}(U_{0}) e^{c}_{i} e^{d}_{j} e^{e}_{l}-2R_{a b c d} X^{j}_{0} \\dot(z)^{b} \\dot(z)^{c} \\partial_{s}(U_{0}) \\partial_{\\epsilon \\epsilon}(U_{0}) e^{d}_{j}-4R_{a b c d} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(X^{k}_{0}) \\partial_{s}(U_{0}) e^{b}_{k} e^{d}_{j}-4R_{a b c d} V_{0} X^{j}_{0} \\dot(z)^{c} \\partial_{s}(U_{0}) e^{d}_{j} n^{b}-2R_{a b c d} \\dot(z)^{b} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{\\epsilon}(X^{k}_{0}) \\partial_{s}(U_{0}) e^{d}_{k}-2R_{a b c d} V_{0} \\dot(z)^{b} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) n^{d}-2R_{a b c d} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(X^{k}_{0}) \\partial_{s}(U_{0}) e^{b}_{j} e^{d}_{k}-2R_{a b c d} V_{0} X^{j}_{0} \\dot(z)^{c} \\partial_{s}(U_{0}) e^{b}_{j} n^{d}-3R_{a b c d} X^{i}_{0} \\dot(z)^{b} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s \\epsilon}(U_{0}) e^{d}_{i}-3R_{a b c d} X^{i}_{0} X^{j}_{0} \\dot(z)^{c} \\partial_{\\epsilon s}(U_{0}) e^{b}_{i} e^{d}_{j} + \\dot(z)_{a} \\partial_{s \\epsilon \\epsilon \\epsilon}(U_{0})-3R_{a b c d} X^{i}_{0} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s}(X^{k}_{0}) e^{b}_{k} e^{d}_{i} + R_{a b c d} X^{i}_{0} X^{j}_{0} \\partial_{s}(X^{k}_{0}) e^{b}_{i} e^{c}_{j} e^{d}_{k} + 3\\partial_{s \\epsilon \\epsilon}(X^{i}_{0}) e_{a i} + 6\\partial_{\\epsilon s}(V_{0}) n_{a})"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\frac{1}{3}\\dot{z}\\,^{a} \\partial_{s}{U_{0}} \\left(-2X^{k}\\,_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\dot{z}\\,^{d} \\nabla_{b}{R_{a c d e}} \\partial_{s}{U_{0}} \\partial_{\\epsilon}{U_{0}}\\,^{2} e^{e}\\,_{k}-3X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\nabla_{b}{R_{a d c e}} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l}-X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\nabla_{d}{R_{a b c e}} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} e^{d}\\,_{j} e^{e}\\,_{l}-X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{b} \\nabla_{c}{R_{a d b e}} \\partial_{s}{U_{0}} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}-2R_{a b c d} X^{j}\\,_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} \\partial_{\\epsilon \\epsilon}{U_{0}} e^{d}\\,_{j}-4R_{a b c d} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{X^{k}\\,_{0}} \\partial_{s}{U_{0}} e^{b}\\,_{k} e^{d}\\,_{j}-4R_{a b c d} V_{0} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} e^{d}\\,_{j} n^{b}-2R_{a b c d} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{\\epsilon}{X^{k}\\,_{0}} \\partial_{s}{U_{0}} e^{d}\\,_{k}-2R_{a b c d} V_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} n^{d}-2R_{a b c d} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{X^{k}\\,_{0}} \\partial_{s}{U_{0}} e^{b}\\,_{j} e^{d}\\,_{k}-2R_{a b c d} V_{0} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} e^{b}\\,_{j} n^{d}-3R_{a b c d} X^{i}\\,_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s \\epsilon}{U_{0}} e^{d}\\,_{i}-3R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon s}{U_{0}} e^{b}\\,_{i} e^{d}\\,_{j}+\\dot{z}\\,_{a} \\partial_{s \\epsilon \\epsilon \\epsilon}{U_{0}}-3R_{a b c d} X^{i}\\,_{0} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{X^{k}\\,_{0}} e^{b}\\,_{k} e^{d}\\,_{i}+R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\partial_{s}{X^{k}\\,_{0}} e^{b}\\,_{i} e^{c}\\,_{j} e^{d}\\,_{k}+3\\partial_{s \\epsilon \\epsilon}{X^{i}\\,_{0}} e_{a i}+6\\partial_{\\epsilon s}{V_{0}} n_{a}\\right)\\end{dmath*}"
+				}
+			],
+			"source": "substitute(Oeps3linT1, Oeps3subs1);"
+		},
+		{
+			"cell_id": 15499909198431130512,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 327000206798378851,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 15217677184959415553,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-X^{k}_{0} X^{l}_{0} \\dot(z)^{a} \\dot(z)^{b} \\dot(z)^{c} \\nabla_{a}(R_{b d c e}) \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) \\partial_{s}(U_{0}) e^{d}_{k} e^{e}_{l} -  1/3 X^{i}_{0} X^{j}_{0} X^{l}_{0} \\dot(z)^{a} \\dot(z)^{b} \\nabla_{c}(R_{a d b e}) \\partial_{s}(U_{0}) \\partial_{s}(U_{0}) e^{c}_{i} e^{d}_{j} e^{e}_{l}-2R_{a b c d} X^{j}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{\\epsilon}(X^{k}_{0}) \\partial_{s}(U_{0}) \\partial_{s}(U_{0}) e^{b}_{j} e^{d}_{k}-2R_{a b c d} V_{0} X^{j}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{s}(U_{0}) \\partial_{s}(U_{0}) e^{b}_{j} n^{d}-R_{a b c d} X^{i}_{0} X^{j}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{s}(U_{0}) \\partial_{\\epsilon s}(U_{0}) e^{b}_{i} e^{d}_{j} +  1/3 \\dot(z)_{a} \\dot(z)^{a} \\partial_{s}(U_{0}) \\partial_{\\epsilon \\epsilon \\epsilon s}(U_{0})-R_{a b c d} X^{i}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) \\partial_{s}(X^{k}_{0}) e^{b}_{i} e^{d}_{k} +  1/3 R_{a b c d} X^{i}_{0} X^{j}_{0} \\dot(z)^{a} \\partial_{s}(U_{0}) \\partial_{s}(X^{k}_{0}) e^{b}_{i} e^{c}_{j} e^{d}_{k} + \\dot(z)^{a} \\partial_{s}(U_{0}) \\partial_{\\epsilon \\epsilon s}(X^{i}_{0}) e_{a i} + 2\\dot(z)^{a} \\partial_{s}(U_{0}) \\partial_{\\epsilon s}(V_{0}) n_{a}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\nabla_{a}{R_{b d c e}} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} \\partial_{s}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l} - \\frac{1}{3}X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{b} \\nabla_{c}{R_{a d b e}} \\partial_{s}{U_{0}} \\partial_{s}{U_{0}} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}-2R_{a b c d} X^{j}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{\\epsilon}{X^{k}\\,_{0}} \\partial_{s}{U_{0}} \\partial_{s}{U_{0}} e^{b}\\,_{j} e^{d}\\,_{k}-2R_{a b c d} V_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} \\partial_{s}{U_{0}} e^{b}\\,_{j} n^{d}-R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} \\partial_{\\epsilon s}{U_{0}} e^{b}\\,_{i} e^{d}\\,_{j}+\\frac{1}{3}\\dot{z}\\,_{a} \\dot{z}\\,^{a} \\partial_{s}{U_{0}} \\partial_{\\epsilon \\epsilon \\epsilon s}{U_{0}}-R_{a b c d} X^{i}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} \\partial_{s}{X^{k}\\,_{0}} e^{b}\\,_{i} e^{d}\\,_{k}+\\frac{1}{3}R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\partial_{s}{U_{0}} \\partial_{s}{X^{k}\\,_{0}} e^{b}\\,_{i} e^{c}\\,_{j} e^{d}\\,_{k}+\\dot{z}\\,^{a} \\partial_{s}{U_{0}} \\partial_{\\epsilon \\epsilon s}{X^{i}\\,_{0}} e_{a i}+2\\dot{z}\\,^{a} \\partial_{s}{U_{0}} \\partial_{\\epsilon s}{V_{0}} n_{a}\\end{dmath*}"
+				}
+			],
+			"source": "distribute(Oeps3linT1);"
+		},
+		{
+			"cell_id": 9029687933841878043,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 1634132128785680490,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 11769750845060473981,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\dot(z)_{a} \\dot(z)^{a} -> 0"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\dot{z}\\,_{a} \\dot{z}\\,^{a} \\rightarrow 0\\end{dmath*}"
+				},
+				{
+					"cell_id": 18218307060014406542,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 13216261144631730684,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\dot(z)^{a} n_{a} -> -1"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\dot{z}\\,^{a} n_{a} \\rightarrow -1\\end{dmath*}"
+				},
+				{
+					"cell_id": 14811388631668112215,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 10848300741694802899,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\dot(z)^{a} e_{a i} -> 0"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\dot{z}\\,^{a} e_{a i} \\rightarrow 0\\end{dmath*}"
+				}
+			],
+			"source": "zzsubs := \\dot{z}^{a} \\dot{z}_{a} -> 0;\nznsubs := \\dot{z}^{a} n_{a} -> -1;\nzesubs := \\dot{z}^{a} e_{a i} -> 0;"
+		},
+		{
+			"cell_id": 6006976272887622130,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 4309176145937232308,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 10440274259824993343,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-X^{k}_{0} X^{l}_{0} \\dot(z)^{a} \\dot(z)^{b} \\dot(z)^{c} \\nabla_{a}(R_{b d c e}) \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) \\partial_{s}(U_{0}) e^{d}_{k} e^{e}_{l} -  1/3 X^{i}_{0} X^{j}_{0} X^{l}_{0} \\dot(z)^{a} \\dot(z)^{b} \\nabla_{c}(R_{a d b e}) \\partial_{s}(U_{0}) \\partial_{s}(U_{0}) e^{c}_{i} e^{d}_{j} e^{e}_{l}-2R_{a b c d} X^{j}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{\\epsilon}(X^{k}_{0}) \\partial_{s}(U_{0}) \\partial_{s}(U_{0}) e^{b}_{j} e^{d}_{k}-2R_{a b c d} V_{0} X^{j}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{s}(U_{0}) \\partial_{s}(U_{0}) e^{b}_{j} n^{d}-R_{a b c d} X^{i}_{0} X^{j}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{s}(U_{0}) \\partial_{\\epsilon s}(U_{0}) e^{b}_{i} e^{d}_{j}-R_{a b c d} X^{i}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) \\partial_{s}(X^{k}_{0}) e^{b}_{i} e^{d}_{k} +  1/3 R_{a b c d} X^{i}_{0} X^{j}_{0} \\dot(z)^{a} \\partial_{s}(U_{0}) \\partial_{s}(X^{k}_{0}) e^{b}_{i} e^{c}_{j} e^{d}_{k}-2\\partial_{s}(U_{0}) \\partial_{\\epsilon s}(V_{0})"
+						}
+					],
+					"source": "\\begin{dmath*}{}-X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\nabla_{a}{R_{b d c e}} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} \\partial_{s}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l} - \\frac{1}{3}X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{b} \\nabla_{c}{R_{a d b e}} \\partial_{s}{U_{0}} \\partial_{s}{U_{0}} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}-2R_{a b c d} X^{j}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{\\epsilon}{X^{k}\\,_{0}} \\partial_{s}{U_{0}} \\partial_{s}{U_{0}} e^{b}\\,_{j} e^{d}\\,_{k}-2R_{a b c d} V_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} \\partial_{s}{U_{0}} e^{b}\\,_{j} n^{d}-R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} \\partial_{\\epsilon s}{U_{0}} e^{b}\\,_{i} e^{d}\\,_{j}-R_{a b c d} X^{i}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} \\partial_{s}{X^{k}\\,_{0}} e^{b}\\,_{i} e^{d}\\,_{k}+\\frac{1}{3}R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\partial_{s}{U_{0}} \\partial_{s}{X^{k}\\,_{0}} e^{b}\\,_{i} e^{c}\\,_{j} e^{d}\\,_{k}-2\\partial_{s}{U_{0}} \\partial_{\\epsilon s}{V_{0}}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(Oeps3linT1, zzsubs),\nsubstitute(Oeps3linT1, znsubs),\nsubstitute(Oeps3linT1, zesubs);"
+		},
+		{
+			"cell_id": 3287616590864861800,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 14030345950418263045,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 9206080288074995172,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\nabla_{\\epsilon}(\\partial_{s}(Y^{a'})) \\nabla_{\\epsilon \\epsilon}(\\partial_{s}(Y_{a'}))"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\nabla_{\\epsilon}\\left(\\partial_{s}{Y^{a'}}\\right) \\nabla_{\\epsilon \\epsilon}\\left(\\partial_{s}{Y_{a'}}\\right)\\end{dmath*}"
+				}
+			],
+			"source": "Oeps3linT2 := \\nabla_{\\epsilon \\epsilon}{\\partial_{s}{Y_{a'}}} \n\\nabla_{\\epsilon}{\\partial_{s}{Y^{a'}}};"
+		},
+		{
+			"cell_id": 7050755563995630712,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 5509207916603099046,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 9874700881507802312,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\nabla_{\\epsilon}(\\partial_{s}(Y^{a'})) -> \\dot(z)^{a} \\partial_{\\epsilon s}(U_{0}) + \\partial_{s}(X^{i}_{0}) e^{a}_{i}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\nabla_{\\epsilon}\\left(\\partial_{s}{Y^{a'}}\\right) \\rightarrow \\dot{z}\\,^{a} \\partial_{\\epsilon s}{U_{0}}+\\partial_{s}{X^{i}\\,_{0}} e^{a}\\,_{i}\\end{dmath*}"
+				},
+				{
+					"cell_id": 1194643561520192061,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 15747162436536975488,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\nabla_{\\epsilon \\epsilon}(\\partial_{s}(Y_{a'})) -> -R_{a b c d} X^{j}_{0} \\dot(z)^{b} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) e^{d}_{j}-R_{a b c d} X^{j}_{0} X^{k}_{0} \\dot(z)^{c} \\partial_{s}(U_{0}) e^{b}_{j} e^{d}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\nabla_{\\epsilon \\epsilon}\\left(\\partial_{s}{Y_{a'}}\\right) \\rightarrow -R_{a b c d} X^{j}\\,_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} e^{d}\\,_{j}-R_{a b c d} X^{j}\\,_{0} X^{k}\\,_{0} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} e^{b}\\,_{j} e^{d}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "DepsdsYCL := \\nabla_{\\epsilon}{\\partial_{s}{Y^{a'}}} -> \\dot{z}^{a} \n\\partial_{\\epsilon s}{U_{0}} + e^{a}_{i} \\partial_{s}{X^{i}_{0}};\nDeps2dsYCL := \\nabla_{\\epsilon \\epsilon}{\\partial_{s}{Y_{a'}}} -> R_{a c d b} \\dot{z}^{c}\n\\dot{z}^{b} e^{d}_{j} X^{j}_{0} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}}\n+ R_{a c d b} \\dot{z}^{b} e^{c}_{j} X^{j}_{0} e^{d}_{k} X^{k}_{0} \\partial_{s}{U_{0}};"
+		},
+		{
+			"cell_id": 17017598732028612352,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 2442891214658874987,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 3169124509706568682,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\nabla_{\\epsilon \\epsilon}(\\partial_{s}(Y_{a'})) (\\dot(z)^{a} \\partial_{\\epsilon s}(U_{0}) + \\partial_{s}(X^{i}_{0}) e^{a}_{i})"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\nabla_{\\epsilon \\epsilon}\\left(\\partial_{s}{Y_{a'}}\\right) \\left(\\dot{z}\\,^{a} \\partial_{\\epsilon s}{U_{0}}+\\partial_{s}{X^{i}\\,_{0}} e^{a}\\,_{i}\\right)\\end{dmath*}"
+				},
+				{
+					"cell_id": 3136360553570588978,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 6760780773517874003,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "(-R_{a b c d} X^{j}_{0} \\dot(z)^{b} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) e^{d}_{j}-R_{a b c d} X^{j}_{0} X^{k}_{0} \\dot(z)^{c} \\partial_{s}(U_{0}) e^{b}_{j} e^{d}_{k}) (\\dot(z)^{a} \\partial_{\\epsilon s}(U_{0}) + \\partial_{s}(X^{i}_{0}) e^{a}_{i})"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\left(-R_{a b c d} X^{j}\\,_{0} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} e^{d}\\,_{j}-R_{a b c d} X^{j}\\,_{0} X^{k}\\,_{0} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} e^{b}\\,_{j} e^{d}\\,_{k}\\right) \\left(\\dot{z}\\,^{a} \\partial_{\\epsilon s}{U_{0}}+\\partial_{s}{X^{i}\\,_{0}} e^{a}\\,_{i}\\right)\\end{dmath*}"
+				},
+				{
+					"cell_id": 1042960670854870954,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 11098992132333691972,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "R_{a b c d} X^{i}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) \\partial_{s}(X^{j}_{0}) e^{b}_{i} e^{d}_{j}-R_{a b c d} X^{j}_{0} X^{k}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{s}(U_{0}) \\partial_{\\epsilon s}(U_{0}) e^{b}_{j} e^{d}_{k} + R_{a b c d} X^{i}_{0} X^{j}_{0} \\dot(z)^{a} \\partial_{s}(U_{0}) \\partial_{s}(X^{k}_{0}) e^{b}_{i} e^{c}_{j} e^{d}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}R_{a b c d} X^{i}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} \\partial_{s}{X^{j}\\,_{0}} e^{b}\\,_{i} e^{d}\\,_{j}-R_{a b c d} X^{j}\\,_{0} X^{k}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} \\partial_{\\epsilon s}{U_{0}} e^{b}\\,_{j} e^{d}\\,_{k}+R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\partial_{s}{U_{0}} \\partial_{s}{X^{k}\\,_{0}} e^{b}\\,_{i} e^{c}\\,_{j} e^{d}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(Oeps3linT2, DepsdsYCL);\nsubstitute(Oeps3linT2, Deps2dsYCL);\ndistribute(Oeps3linT2);"
+		},
+		{
+			"cell_id": 7897255700457820952,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 13963239602893252606,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 5820585589224250826,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-X^{k}_{0} X^{l}_{0} \\dot(z)^{a} \\dot(z)^{b} \\dot(z)^{c} \\nabla_{a}(R_{b d c e}) \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) \\partial_{s}(U_{0}) e^{d}_{k} e^{e}_{l} -  1/3 X^{i}_{0} X^{j}_{0} X^{l}_{0} \\dot(z)^{a} \\dot(z)^{b} \\nabla_{c}(R_{a d b e}) \\partial_{s}(U_{0}) \\partial_{s}(U_{0}) e^{c}_{i} e^{d}_{j} e^{e}_{l}-2R_{a b c d} X^{j}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{\\epsilon}(X^{k}_{0}) \\partial_{s}(U_{0}) \\partial_{s}(U_{0}) e^{b}_{j} e^{d}_{k}-2R_{a b c d} V_{0} X^{j}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{s}(U_{0}) \\partial_{s}(U_{0}) e^{b}_{j} n^{d}-R_{a b c d} X^{i}_{0} X^{j}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{s}(U_{0}) \\partial_{\\epsilon s}(U_{0}) e^{b}_{i} e^{d}_{j}-R_{a b c d} X^{i}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) \\partial_{s}(X^{k}_{0}) e^{b}_{i} e^{d}_{k} +  4/3 R_{a b c d} X^{i}_{0} X^{j}_{0} \\dot(z)^{a} \\partial_{s}(U_{0}) \\partial_{s}(X^{k}_{0}) e^{b}_{i} e^{c}_{j} e^{d}_{k}-2\\partial_{s}(U_{0}) \\partial_{\\epsilon s}(V_{0}) + R_{a b c d} X^{i}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) \\partial_{s}(X^{j}_{0}) e^{b}_{i} e^{d}_{j}-R_{a b c d} X^{j}_{0} X^{k}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{s}(U_{0}) \\partial_{\\epsilon s}(U_{0}) e^{b}_{j} e^{d}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\nabla_{a}{R_{b d c e}} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} \\partial_{s}{U_{0}} e^{d}\\,_{k} e^{e}\\,_{l} - \\frac{1}{3}X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{b} \\nabla_{c}{R_{a d b e}} \\partial_{s}{U_{0}} \\partial_{s}{U_{0}} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}-2R_{a b c d} X^{j}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{\\epsilon}{X^{k}\\,_{0}} \\partial_{s}{U_{0}} \\partial_{s}{U_{0}} e^{b}\\,_{j} e^{d}\\,_{k}-2R_{a b c d} V_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} \\partial_{s}{U_{0}} e^{b}\\,_{j} n^{d}-R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} \\partial_{\\epsilon s}{U_{0}} e^{b}\\,_{i} e^{d}\\,_{j}-R_{a b c d} X^{i}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} \\partial_{s}{X^{k}\\,_{0}} e^{b}\\,_{i} e^{d}\\,_{k}+\\frac{4}{3}R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\partial_{s}{U_{0}} \\partial_{s}{X^{k}\\,_{0}} e^{b}\\,_{i} e^{c}\\,_{j} e^{d}\\,_{k}-2\\partial_{s}{U_{0}} \\partial_{\\epsilon s}{V_{0}}+R_{a b c d} X^{i}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} \\partial_{s}{X^{j}\\,_{0}} e^{b}\\,_{i} e^{d}\\,_{j}-R_{a b c d} X^{j}\\,_{0} X^{k}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} \\partial_{\\epsilon s}{U_{0}} e^{b}\\,_{j} e^{d}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "Oeps3LinEl := @(Oeps3linT1) + @(Oeps3linT2);"
+		},
+		{
+			"cell_id": 9607851141478201456,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 15577099376341070347,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 4927324767759488418,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\partial_{s}(U_{0}) \\partial_{s}(U_{0}) -> \\partial_{s}(U_{0})^{2}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\partial_{s}{U_{0}} \\partial_{s}{U_{0}} \\rightarrow \\partial_{s}{U_{0}}\\,^{2}\\end{dmath*}"
+				}
+			],
+			"source": "dsU0square := \\partial_{s}{U_{0}} \\partial_{s}{U_{0}} -> \\partial_{s}{U_{0}}^{2};"
+		},
+		{
+			"cell_id": 4023608163765724047,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 1346281898875845518,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 13870688386485765705,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-X^{k}_{0} X^{l}_{0} \\dot(z)^{a} \\dot(z)^{b} \\dot(z)^{c} \\nabla_{a}(R_{b d c e}) \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0})^{2} e^{d}_{k} e^{e}_{l} -  1/3 X^{i}_{0} X^{j}_{0} X^{l}_{0} \\dot(z)^{a} \\dot(z)^{b} \\nabla_{c}(R_{a d b e}) \\partial_{s}(U_{0})^{2} e^{c}_{i} e^{d}_{j} e^{e}_{l}-2R_{a b c d} X^{j}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{\\epsilon}(X^{k}_{0}) \\partial_{s}(U_{0})^{2} e^{b}_{j} e^{d}_{k}-2R_{a b c d} V_{0} X^{j}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{s}(U_{0})^{2} e^{b}_{j} n^{d}-R_{a b c d} X^{i}_{0} X^{j}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{s}(U_{0}) \\partial_{\\epsilon s}(U_{0}) e^{b}_{i} e^{d}_{j}-R_{a b c d} X^{i}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) \\partial_{s}(X^{k}_{0}) e^{b}_{i} e^{d}_{k} +  4/3 R_{a b c d} X^{i}_{0} X^{j}_{0} \\dot(z)^{a} \\partial_{s}(U_{0}) \\partial_{s}(X^{k}_{0}) e^{b}_{i} e^{c}_{j} e^{d}_{k}-2\\partial_{s}(U_{0}) \\partial_{\\epsilon s}(V_{0}) + R_{a b c d} X^{i}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) \\partial_{s}(X^{j}_{0}) e^{b}_{i} e^{d}_{j}-R_{a b c d} X^{j}_{0} X^{k}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{s}(U_{0}) \\partial_{\\epsilon s}(U_{0}) e^{b}_{j} e^{d}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\nabla_{a}{R_{b d c e}} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}}\\,^{2} e^{d}\\,_{k} e^{e}\\,_{l} - \\frac{1}{3}X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{b} \\nabla_{c}{R_{a d b e}} \\partial_{s}{U_{0}}\\,^{2} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}-2R_{a b c d} X^{j}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{\\epsilon}{X^{k}\\,_{0}} \\partial_{s}{U_{0}}\\,^{2} e^{b}\\,_{j} e^{d}\\,_{k}-2R_{a b c d} V_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{s}{U_{0}}\\,^{2} e^{b}\\,_{j} n^{d}-R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} \\partial_{\\epsilon s}{U_{0}} e^{b}\\,_{i} e^{d}\\,_{j}-R_{a b c d} X^{i}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} \\partial_{s}{X^{k}\\,_{0}} e^{b}\\,_{i} e^{d}\\,_{k}+\\frac{4}{3}R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\partial_{s}{U_{0}} \\partial_{s}{X^{k}\\,_{0}} e^{b}\\,_{i} e^{c}\\,_{j} e^{d}\\,_{k}-2\\partial_{s}{U_{0}} \\partial_{\\epsilon s}{V_{0}}+R_{a b c d} X^{i}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} \\partial_{s}{X^{j}\\,_{0}} e^{b}\\,_{i} e^{d}\\,_{j}-R_{a b c d} X^{j}\\,_{0} X^{k}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} \\partial_{\\epsilon s}{U_{0}} e^{b}\\,_{j} e^{d}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(Oeps3LinEl, dsU0square);"
+		},
+		{
+			"cell_id": 979483000813950051,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 7038032199412886382,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 1321928424931443980,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-X^{k}_{0} X^{l}_{0} \\dot(z)^{a} \\dot(z)^{b} \\dot(z)^{c} \\nabla_{a}(R_{b d c e}) \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0})^{2} e^{d}_{k} e^{e}_{l} -  1/3 X^{i}_{0} X^{j}_{0} X^{l}_{0} \\dot(z)^{a} \\dot(z)^{b} \\nabla_{c}(R_{a d b e}) \\partial_{s}(U_{0})^{2} e^{c}_{i} e^{d}_{j} e^{e}_{l}-2R_{a b c d} X^{j}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{\\epsilon}(X^{k}_{0}) \\partial_{s}(U_{0})^{2} e^{b}_{j} e^{d}_{k}-2R_{a b c d} V_{0} X^{j}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{s}(U_{0})^{2} e^{b}_{j} n^{d}-R_{a b c d} X^{i}_{0} X^{j}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{s}(U_{0}) \\partial_{\\epsilon s}(U_{0}) e^{b}_{i} e^{d}_{j}-R_{a b c d} X^{i}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) \\partial_{s}(X^{k}_{0}) e^{b}_{i} e^{d}_{k} +  4/3 R_{a b c d} X^{i}_{0} X^{j}_{0} \\dot(z)^{a} \\partial_{s}(U_{0}) \\partial_{s}(X^{k}_{0}) e^{b}_{i} e^{c}_{j} e^{d}_{k}-2\\partial_{s}(U_{0}) \\partial_{\\epsilon s}(V_{0}) + R_{a b c d} X^{i}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0}) \\partial_{s}(X^{j}_{0}) e^{b}_{i} e^{d}_{j}-R_{a b c d} X^{j}_{0} X^{k}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{s}(U_{0}) \\partial_{\\epsilon s}(U_{0}) e^{b}_{j} e^{d}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-X^{k}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\nabla_{a}{R_{b d c e}} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}}\\,^{2} e^{d}\\,_{k} e^{e}\\,_{l} - \\frac{1}{3}X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{b} \\nabla_{c}{R_{a d b e}} \\partial_{s}{U_{0}}\\,^{2} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}-2R_{a b c d} X^{j}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{\\epsilon}{X^{k}\\,_{0}} \\partial_{s}{U_{0}}\\,^{2} e^{b}\\,_{j} e^{d}\\,_{k}-2R_{a b c d} V_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{s}{U_{0}}\\,^{2} e^{b}\\,_{j} n^{d}-R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} \\partial_{\\epsilon s}{U_{0}} e^{b}\\,_{i} e^{d}\\,_{j}-R_{a b c d} X^{i}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} \\partial_{s}{X^{k}\\,_{0}} e^{b}\\,_{i} e^{d}\\,_{k}+\\frac{4}{3}R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\partial_{s}{U_{0}} \\partial_{s}{X^{k}\\,_{0}} e^{b}\\,_{i} e^{c}\\,_{j} e^{d}\\,_{k}-2\\partial_{s}{U_{0}} \\partial_{\\epsilon s}{V_{0}}+R_{a b c d} X^{i}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}} \\partial_{s}{X^{j}\\,_{0}} e^{b}\\,_{i} e^{d}\\,_{j}-R_{a b c d} X^{j}\\,_{0} X^{k}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} \\partial_{\\epsilon s}{U_{0}} e^{b}\\,_{j} e^{d}\\,_{k}\\end{dmath*}"
+				}
+			],
+			"source": "Oeps3LinEl;"
+		},
+		{
+			"cell_id": 9543977093046434491,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 16696316708735834534,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 14492691959646749972,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "R_{a b c d} \\dot(z)^{a} \\dot(z)^{c} e^{b}_{i} e^{d}_{j} -> -A_{ij}"
+						}
+					],
+					"source": "\\begin{dmath*}{}R_{a b c d} \\dot{z}\\,^{a} \\dot{z}\\,^{c} e^{b}\\,_{i} e^{d}\\,_{j} \\rightarrow -A_{ij}\\end{dmath*}"
+				},
+				{
+					"cell_id": 853378798171188773,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 12911390011583478762,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "X^{j}_{0} \\partial_{\\epsilon}(X^{k}_{0}) e^{b}_{j} e^{d}_{k} -> X^{i}_{0} \\partial_{\\epsilon}(X^{j}_{0}) e^{b}_{i} e^{d}_{j}"
+						}
+					],
+					"source": "\\begin{dmath*}{}X^{j}\\,_{0} \\partial_{\\epsilon}{X^{k}\\,_{0}} e^{b}\\,_{j} e^{d}\\,_{k} \\rightarrow X^{i}\\,_{0} \\partial_{\\epsilon}{X^{j}\\,_{0}} e^{b}\\,_{i} e^{d}\\,_{j}\\end{dmath*}"
+				},
+				{
+					"cell_id": 5972356426307338507,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 3750867508582132497,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "X^{j}_{0} X^{k}_{0} e^{b}_{j} e^{d}_{k} -> X^{i}_{0} X^{j}_{0} e^{b}_{i} e^{d}_{j}"
+						}
+					],
+					"source": "\\begin{dmath*}{}X^{j}\\,_{0} X^{k}\\,_{0} e^{b}\\,_{j} e^{d}\\,_{k} \\rightarrow X^{i}\\,_{0} X^{j}\\,_{0} e^{b}\\,_{i} e^{d}\\,_{j}\\end{dmath*}"
+				},
+				{
+					"cell_id": 13788128265188345271,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 5379392324956548307,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "X^{i}_{0} X^{k}_{0} \\dot(z)^{a} \\dot(z)^{b} \\dot(z)^{c} \\nabla_{a}(R_{b d c e}) e^{d}_{i} e^{e}_{k} -> -X^{i}_{0} X^{j}_{0} \\dot(z)^{a} \\partial_{a}(A_{i j})"
+						}
+					],
+					"source": "\\begin{dmath*}{}X^{i}\\,_{0} X^{k}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\nabla_{a}{R_{b d c e}} e^{d}\\,_{i} e^{e}\\,_{k} \\rightarrow -X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\partial_{a}{A_{i j}}\\end{dmath*}"
+				},
+				{
+					"cell_id": 17293417373295994541,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 12785762366882261272,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "X^{i}_{0} X^{j}_{0} X^{l}_{0} \\dot(z)^{a} \\dot(z)^{b} \\nabla_{c}(R_{a d b e}) e^{c}_{i} e^{d}_{j} e^{e}_{l} -> -X^{i}_{0} X^{j}_{0} X^{k}_{0} \\partial_{a}(A_{i j}) e^{a}_{k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{b} \\nabla_{c}{R_{a d b e}} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l} \\rightarrow -X^{i}\\,_{0} X^{j}\\,_{0} X^{k}\\,_{0} \\partial_{a}{A_{i j}} e^{a}\\,_{k}\\end{dmath*}"
+				},
+				{
+					"cell_id": 8715785136233939111,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 12624988977308521195,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "R_{a b c d} \\dot(z)^{a} e^{b}_{i} e^{c}_{j} e^{d}_{k} -> B_{i j k}"
+						}
+					],
+					"source": "\\begin{dmath*}{}R_{a b c d} \\dot{z}\\,^{a} e^{b}\\,_{i} e^{c}\\,_{j} e^{d}\\,_{k} \\rightarrow B_{i j k}\\end{dmath*}"
+				},
+				{
+					"cell_id": 1879401957664878326,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 16075245464051518532,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "R_{a b c d} X^{j}_{0} \\dot(z)^{a} \\dot(z)^{c} e^{b}_{j} n^{d} -> C_{i} X^{i}_{0}"
+						}
+					],
+					"source": "\\begin{dmath*}{}R_{a b c d} X^{j}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} e^{b}\\,_{j} n^{d} \\rightarrow C_{i} X^{i}\\,_{0}\\end{dmath*}"
+				}
+			],
+			"source": "Aij := R_{a b c d} \\dot{z}^{a} e^{b}_{i} \\dot{z}^{c} e^{d}_{j} -> - A_{ij};\nindexsubs4 := e^{b}_{j} X^{j}_{0} e^{d}_{k} \\partial_{\\epsilon}{X^{k}_{0}} \n-> e^{b}_{i} X^{i}_{0} e^{d}_{j} \\partial_{\\epsilon}{X^{j}_{0}};\nindexsubs5 := e^{b}_{j} X^{j}_{0} e^{d}_{k} X^{k}_{0} \n-> e^{b}_{i} X^{i}_{0} e^{d}_{j} X^{j}_{0};\nAderiv := \\dot{z}^{a} \\nabla_{a}{R_{b d c e}} \\dot{z}^{b} \\dot{z}^{c} e^{d}_{i} X^{i}_{0} \ne^{e}_{k} X^{k}_{0} -> - \\dot{z}^{a} \\partial_{a}{A_{i j}} X^{i}_{0} X^{j}_{0};\nAderiv2 := e^{c}_{i} X^{i}_{0} \\nabla_{c}{R_{a d b e}} \\dot{z}^{a} \\dot{z}^{b} e^{d}_{j} \nX^{j}_{0} e^{e}_{l} X^{l}_{0} -> - e^{a}_{k} X^{k}_{0} \\partial_{a}{A_{i j}} X^{i}_{0}\nX^{j}_{0};\nBijk := R_{a b c d} \\dot{z}^{a} e^{b}_{i} e^{c}_{j} e^{d}_{k} -> B_{i j k};\nCi := R_{a b c d} \\dot{z}^{a} e^{b}_{j} X^{j}_{0} \\dot{z}^{c} n^{d} -> C_{i} X^{i}_{0};"
+		},
+		{
+			"cell_id": 12957792188590868025,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 8675831381231031203,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 12452254594170815298,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-X^{i}_{0} X^{k}_{0} \\dot(z)^{a} \\dot(z)^{b} \\dot(z)^{c} \\nabla_{a}(R_{b d c e}) \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0})^{2} e^{d}_{i} e^{e}_{k} -  1/3 X^{i}_{0} X^{j}_{0} X^{l}_{0} \\dot(z)^{a} \\dot(z)^{b} \\nabla_{c}(R_{a d b e}) \\partial_{s}(U_{0})^{2} e^{c}_{i} e^{d}_{j} e^{e}_{l}-2R_{a b c d} X^{i}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{\\epsilon}(X^{j}_{0}) \\partial_{s}(U_{0})^{2} e^{b}_{i} e^{d}_{j}-2R_{a b c d} V_{0} X^{j}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{s}(U_{0})^{2} e^{b}_{j} n^{d}-2R_{a b c d} X^{i}_{0} X^{j}_{0} \\dot(z)^{a} \\dot(z)^{c} \\partial_{s}(U_{0}) \\partial_{\\epsilon s}(U_{0}) e^{b}_{i} e^{d}_{j} +  4/3 R_{a b c d} X^{i}_{0} X^{j}_{0} \\dot(z)^{a} \\partial_{s}(U_{0}) \\partial_{s}(X^{k}_{0}) e^{b}_{i} e^{c}_{j} e^{d}_{k}-2\\partial_{s}(U_{0}) \\partial_{\\epsilon s}(V_{0})"
+						}
+					],
+					"source": "\\begin{dmath*}{}-X^{i}\\,_{0} X^{k}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{b} \\dot{z}\\,^{c} \\nabla_{a}{R_{b d c e}} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}}\\,^{2} e^{d}\\,_{i} e^{e}\\,_{k} - \\frac{1}{3}X^{i}\\,_{0} X^{j}\\,_{0} X^{l}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{b} \\nabla_{c}{R_{a d b e}} \\partial_{s}{U_{0}}\\,^{2} e^{c}\\,_{i} e^{d}\\,_{j} e^{e}\\,_{l}-2R_{a b c d} X^{i}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{\\epsilon}{X^{j}\\,_{0}} \\partial_{s}{U_{0}}\\,^{2} e^{b}\\,_{i} e^{d}\\,_{j}-2R_{a b c d} V_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{s}{U_{0}}\\,^{2} e^{b}\\,_{j} n^{d}-2R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\dot{z}\\,^{c} \\partial_{s}{U_{0}} \\partial_{\\epsilon s}{U_{0}} e^{b}\\,_{i} e^{d}\\,_{j}+\\frac{4}{3}R_{a b c d} X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\partial_{s}{U_{0}} \\partial_{s}{X^{k}\\,_{0}} e^{b}\\,_{i} e^{c}\\,_{j} e^{d}\\,_{k}-2\\partial_{s}{U_{0}} \\partial_{\\epsilon s}{V_{0}}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(Oeps3LinEl, indexsubs4),\nsubstitute(Oeps3LinEl, indexsubs5),\nmeld(Oeps3LinEl);"
+		},
+		{
+			"cell_id": 12540990780431476679,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 2463705108020567516,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 955501191387726823,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "X^{i}_{0} X^{j}_{0} \\dot(z)^{a} \\partial_{a}(A_{i j}) \\partial_{\\epsilon}(U_{0}) \\partial_{s}(U_{0})^{2} +  1/3 X^{i}_{0} X^{j}_{0} X^{k}_{0} \\partial_{a}(A_{i j}) \\partial_{s}(U_{0})^{2} e^{a}_{k} + 2A_{ij} X^{i}_{0} \\partial_{\\epsilon}(X^{j}_{0}) \\partial_{s}(U_{0})^{2}-2C_{i} V_{0} X^{i}_{0} \\partial_{s}(U_{0})^{2} + 2A_{ij} X^{i}_{0} X^{j}_{0} \\partial_{s}(U_{0}) \\partial_{\\epsilon s}(U_{0}) +  4/3 B_{i j k} X^{i}_{0} X^{j}_{0} \\partial_{s}(U_{0}) \\partial_{s}(X^{k}_{0})-2\\partial_{s}(U_{0}) \\partial_{\\epsilon s}(V_{0})"
+						}
+					],
+					"source": "\\begin{dmath*}{}X^{i}\\,_{0} X^{j}\\,_{0} \\dot{z}\\,^{a} \\partial_{a}{A_{i j}} \\partial_{\\epsilon}{U_{0}} \\partial_{s}{U_{0}}\\,^{2}+\\frac{1}{3}X^{i}\\,_{0} X^{j}\\,_{0} X^{k}\\,_{0} \\partial_{a}{A_{i j}} \\partial_{s}{U_{0}}\\,^{2} e^{a}\\,_{k}+2A_{ij} X^{i}\\,_{0} \\partial_{\\epsilon}{X^{j}\\,_{0}} \\partial_{s}{U_{0}}\\,^{2}-2C_{i} V_{0} X^{i}\\,_{0} \\partial_{s}{U_{0}}\\,^{2}+2A_{ij} X^{i}\\,_{0} X^{j}\\,_{0} \\partial_{s}{U_{0}} \\partial_{\\epsilon s}{U_{0}}+\\frac{4}{3}B_{i j k} X^{i}\\,_{0} X^{j}\\,_{0} \\partial_{s}{U_{0}} \\partial_{s}{X^{k}\\,_{0}}-2\\partial_{s}{U_{0}} \\partial_{\\epsilon s}{V_{0}}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(Oeps3LinEl, Aij),\nsubstitute(Oeps3LinEl, Aderiv),\nsubstitute(Oeps3LinEl, Aderiv2),\nsubstitute(Oeps3LinEl, Bijk),\nsubstitute(Oeps3LinEl, Ci);"
+		},
+		{
+			"cell_id": 9166656564971781166,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"source": ""
+		}
+	],
+	"description": "Cadabra JSON notebook format",
+	"version": 1.0
+}

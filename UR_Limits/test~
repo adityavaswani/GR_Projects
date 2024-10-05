@@ -1,0 +1,327 @@
+{
+	"cell_id": 7384663656761455917,
+	"cells": [
+		{
+			"cell_id": 16014689135532531012,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"source": "def post_process(ex):\n\tsort_product(ex)\n\tcanonicalise(ex)\n\tcollect_terms(ex)"
+		},
+		{
+			"cell_id": 13122751967718215269,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 5211087259692476767,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Coordinate attached to~}\\left[U,~\\discretionary{}{}{} \\epsilon,~\\discretionary{}{}{} t\\right].\\end{dmath*}"
+				},
+				{
+					"cell_id": 14234472517337851194,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Indices(position=independent) attached to~}\\left[a,~\\discretionary{}{}{} b,~\\discretionary{}{}{} c,~\\discretionary{}{}{} d,~\\discretionary{}{}{} e,~\\discretionary{}{}{} f,~\\discretionary{}{}{} g,~\\discretionary{}{}{} h\\#\\right].\\end{dmath*}"
+				},
+				{
+					"cell_id": 2765701436705328474,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Indices(position=free) attached to~}\\left[i,~\\discretionary{}{}{} j,~\\discretionary{}{}{} k,~\\discretionary{}{}{} l\\#\\right].\\end{dmath*}"
+				},
+				{
+					"cell_id": 10310125827710889743,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property TableauSymmetry attached to~}R_{a b c d}.\\end{dmath*}"
+				}
+			],
+			"source": "{U, \\epsilon, t}::Coordinate;\n{a,b,c,d,e,f,g,h#}::Indices(vector, position=independent);\n{i, j, k, l#}::Indices(twoD);\nR_{a b c d}::RiemannTensor;"
+		},
+		{
+			"cell_id": 14959547675037639579,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 13097637597574601269,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Derivative attached to~}\\nabla{\\#}.\\end{dmath*}"
+				},
+				{
+					"cell_id": 8325584488937909558,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property SatisfiesBianchi attached to~}\\nabla_{e}{R_{a b c d}}.\\end{dmath*}"
+				},
+				{
+					"cell_id": 8472059448396438903,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property PartialDerivative attached to~}\\partial{\\#}.\\end{dmath*}"
+				},
+				{
+					"cell_id": 2994018315499021399,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property KroneckerDelta attached to~}\\delta_{a b}.\\end{dmath*}"
+				}
+			],
+			"source": "\\nabla{#}::Derivative;\n\\nabla_{e}{ R_{a b c d} }::SatisfiesBianchi;\n\\partial{#}::PartialDerivative;\n\\delta_{a b}::KroneckerDelta;"
+		},
+		{
+			"cell_id": 9488628344891298864,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 16265282701108898852,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 9801456125414011566,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " 1/3 R_{a b c d} -  1/3 R_{a d b c}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\frac{1}{3}R_{a b c d} - \\frac{1}{3}R_{a d b c}\\end{dmath*}"
+				},
+				{
+					"cell_id": 507339010156807142,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 8913586967610315137,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " -  1/3 R_{a b c d} -  1/3 R_{a c b d}"
+						}
+					],
+					"source": "\\begin{dmath*}{} - \\frac{1}{3}R_{a b c d} - \\frac{1}{3}R_{a c b d}\\end{dmath*}"
+				},
+				{
+					"cell_id": 8259970854342565472,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 11164106290016694936,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " 1/3 R_{a b c d} +  1/3 R_{a c b d}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\frac{1}{3}R_{a b c d}+\\frac{1}{3}R_{a c b d}\\end{dmath*}"
+				},
+				{
+					"cell_id": 15227983222908184326,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 15255862487144110651,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " -  1/3 R_{a b c d} +  1/3 R_{a d b c}"
+						}
+					],
+					"source": "\\begin{dmath*}{} - \\frac{1}{3}R_{a b c d}+\\frac{1}{3}R_{a d b c}\\end{dmath*}"
+				}
+			],
+			"source": "CLHapbcd := 1/3 ( R_{a b c d} + R_{a d c b} );\nCLHapbcpdp := 1/3 ( R_{a b d c} + R_{a c d b} );\nCLHapbcpd := - 1/3 ( R_{a b d c} + R_{a c d b} );\nCLHapbcdp := - 1/3 ( R_{a b c d} + R_{a d c b} );"
+		},
+		{
+			"cell_id": 3659650103951248386,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 17633390557572495116,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 17242116194738741401,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "R_{a b c d}"
+						}
+					],
+					"source": "\\begin{dmath*}{}R_{a b c d}\\end{dmath*}"
+				}
+			],
+			"source": "meld(CLHapbcd + CLHapbcpd);"
+		},
+		{
+			"cell_id": 12053769939816120564,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 1820300882490461183,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 5143557122947381191,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-R_{a b c d}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-R_{a b c d}\\end{dmath*}"
+				}
+			],
+			"source": "meld(CLHapbcdp + CLHapbcpdp);"
+		},
+		{
+			"cell_id": 2844622155153092601,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 12475141284207125197,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 19600861816203293,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "R^{a}_{b c d} X^{i} \\dot(z)^{b} \\dot(z)^{d} \\partial_{U}(A) \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{t}(A) e^{c}_{i} + \\dot(z)^{a} \\partial_{U \\epsilon t}(A) + R^{a}_{b c d} X^{i} X^{j} \\dot(z)^{d} \\partial_{U}(A) \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{t}(\\lambda_{0}) e^{b}_{i} e^{c}_{j} + (\\partial_{t}(\\lambda_{0}) \\partial_{U \\epsilon}(X^{i}) + \\partial_{U}(X^{i}) \\partial_{\\epsilon t}(\\lambda_{0}) + \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{U t}(X^{i})) e^{a}_{i} + 2\\partial_{U}(V) \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{t}(\\lambda_{0}) n^{a}"
+						}
+					],
+					"source": "\\begin{dmath*}{}R^{a}\\,_{b c d} X^{i} \\dot{z}\\,^{b} \\dot{z}\\,^{d} \\partial_{U}{A} \\partial_{\\epsilon}{\\lambda_{0}} \\partial_{t}{A} e^{c}\\,_{i}+\\dot{z}\\,^{a} \\partial_{U \\epsilon t}{A}+R^{a}\\,_{b c d} X^{i} X^{j} \\dot{z}\\,^{d} \\partial_{U}{A} \\partial_{\\epsilon}{\\lambda_{0}} \\partial_{t}{\\lambda_{0}} e^{b}\\,_{i} e^{c}\\,_{j}+\\left(\\partial_{t}{\\lambda_{0}} \\partial_{U \\epsilon}{X^{i}}+\\partial_{U}{X^{i}} \\partial_{\\epsilon t}{\\lambda_{0}}+\\partial_{\\epsilon}{\\lambda_{0}} \\partial_{U t}{X^{i}}\\right) e^{a}\\,_{i}+2\\partial_{U}{V} \\partial_{\\epsilon}{\\lambda_{0}} \\partial_{t}{\\lambda_{0}} n^{a}\\end{dmath*}"
+				},
+				{
+					"cell_id": 15754473473852634909,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 15624996659051428258,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "R_{b c d f} X^{i} \\dot(z)^{b} \\dot(z)^{d} \\partial_{U}(A) \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{t}(A) e^{c}_{i} g^{a f} + \\dot(z)^{a} \\partial_{U \\epsilon t}(A) + R_{b c d f} X^{i} X^{j} \\dot(z)^{b} \\partial_{U}(A) \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{t}(\\lambda_{0}) e^{c}_{i} e^{d}_{j} g^{a f} + (\\partial_{t}(\\lambda_{0}) \\partial_{U \\epsilon}(X^{i}) + \\partial_{U}(X^{i}) \\partial_{\\epsilon t}(\\lambda_{0}) + \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{U t}(X^{i})) e^{a}_{i} + 2\\partial_{U}(V) \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{t}(\\lambda_{0}) n^{a}"
+						}
+					],
+					"source": "\\begin{dmath*}{}R_{b c d f} X^{i} \\dot{z}\\,^{b} \\dot{z}\\,^{d} \\partial_{U}{A} \\partial_{\\epsilon}{\\lambda_{0}} \\partial_{t}{A} e^{c}\\,_{i} g^{a f}+\\dot{z}\\,^{a} \\partial_{U \\epsilon t}{A}+R_{b c d f} X^{i} X^{j} \\dot{z}\\,^{b} \\partial_{U}{A} \\partial_{\\epsilon}{\\lambda_{0}} \\partial_{t}{\\lambda_{0}} e^{c}\\,_{i} e^{d}\\,_{j} g^{a f}+\\left(\\partial_{t}{\\lambda_{0}} \\partial_{U \\epsilon}{X^{i}}+\\partial_{U}{X^{i}} \\partial_{\\epsilon t}{\\lambda_{0}}+\\partial_{\\epsilon}{\\lambda_{0}} \\partial_{U t}{X^{i}}\\right) e^{a}\\,_{i}+2\\partial_{U}{V} \\partial_{\\epsilon}{\\lambda_{0}} \\partial_{t}{\\lambda_{0}} n^{a}\\end{dmath*}"
+				},
+				{
+					"cell_id": 12405834734722319380,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 1421311774178119110,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "R_{b c d f} X^{i} \\dot(z)^{b} \\dot(z)^{d} \\partial_{U}(A) \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{t}(A) (-\\dot(z)^{a} n^{f}-\\dot(z)^{f} n^{a} + e^{a k} e^{f}_{k}) e^{c}_{i} + \\dot(z)^{a} \\partial_{U \\epsilon t}(A) + R_{b c d f} X^{i} X^{j} \\dot(z)^{b} \\partial_{U}(A) \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{t}(\\lambda_{0}) (-\\dot(z)^{a} n^{f}-\\dot(z)^{f} n^{a} + e^{a k} e^{f}_{k}) e^{c}_{i} e^{d}_{j} + (\\partial_{t}(\\lambda_{0}) \\partial_{U \\epsilon}(X^{i}) + \\partial_{U}(X^{i}) \\partial_{\\epsilon t}(\\lambda_{0}) + \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{U t}(X^{i})) e^{a}_{i} + 2\\partial_{U}(V) \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{t}(\\lambda_{0}) n^{a}"
+						}
+					],
+					"source": "\\begin{dmath*}{}R_{b c d f} X^{i} \\dot{z}\\,^{b} \\dot{z}\\,^{d} \\partial_{U}{A} \\partial_{\\epsilon}{\\lambda_{0}} \\partial_{t}{A} \\left(-\\dot{z}\\,^{a} n^{f}-\\dot{z}\\,^{f} n^{a}+e^{a k} e^{f}\\,_{k}\\right) e^{c}\\,_{i}+\\dot{z}\\,^{a} \\partial_{U \\epsilon t}{A}+R_{b c d f} X^{i} X^{j} \\dot{z}\\,^{b} \\partial_{U}{A} \\partial_{\\epsilon}{\\lambda_{0}} \\partial_{t}{\\lambda_{0}} \\left(-\\dot{z}\\,^{a} n^{f}-\\dot{z}\\,^{f} n^{a}+e^{a k} e^{f}\\,_{k}\\right) e^{c}\\,_{i} e^{d}\\,_{j}+\\left(\\partial_{t}{\\lambda_{0}} \\partial_{U \\epsilon}{X^{i}}+\\partial_{U}{X^{i}} \\partial_{\\epsilon t}{\\lambda_{0}}+\\partial_{\\epsilon}{\\lambda_{0}} \\partial_{U t}{X^{i}}\\right) e^{a}\\,_{i}+2\\partial_{U}{V} \\partial_{\\epsilon}{\\lambda_{0}} \\partial_{t}{\\lambda_{0}} n^{a}\\end{dmath*}"
+				},
+				{
+					"cell_id": 4037260854808042574,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 4244591114323000899,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "-R_{b c d f} X^{i} \\dot(z)^{a} \\dot(z)^{b} \\dot(z)^{d} \\partial_{U}(A) \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{t}(A) e^{c}_{i} n^{f} + R_{b c d f} X^{i} \\dot(z)^{b} \\dot(z)^{d} \\partial_{U}(A) \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{t}(A) e^{a k} e^{c}_{i} e^{f}_{k} + \\dot(z)^{a} \\partial_{U \\epsilon t}(A)-R_{b c d f} X^{i} X^{j} \\dot(z)^{a} \\dot(z)^{b} \\partial_{U}(A) \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{t}(\\lambda_{0}) e^{c}_{i} e^{d}_{j} n^{f} + R_{b c d f} X^{i} X^{j} \\dot(z)^{b} \\dot(z)^{d} \\partial_{U}(A) \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{t}(\\lambda_{0}) e^{c}_{i} e^{f}_{j} n^{a} + R_{b c d f} X^{i} X^{j} \\dot(z)^{b} \\partial_{U}(A) \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{t}(\\lambda_{0}) e^{a k} e^{c}_{i} e^{d}_{j} e^{f}_{k} + \\partial_{t}(\\lambda_{0}) \\partial_{U \\epsilon}(X^{i}) e^{a}_{i} + \\partial_{U}(X^{i}) \\partial_{\\epsilon t}(\\lambda_{0}) e^{a}_{i} + \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{U t}(X^{i}) e^{a}_{i} + 2\\partial_{U}(V) \\partial_{\\epsilon}(\\lambda_{0}) \\partial_{t}(\\lambda_{0}) n^{a}"
+						}
+					],
+					"source": "\\begin{dmath*}{}-R_{b c d f} X^{i} \\dot{z}\\,^{a} \\dot{z}\\,^{b} \\dot{z}\\,^{d} \\partial_{U}{A} \\partial_{\\epsilon}{\\lambda_{0}} \\partial_{t}{A} e^{c}\\,_{i} n^{f}+R_{b c d f} X^{i} \\dot{z}\\,^{b} \\dot{z}\\,^{d} \\partial_{U}{A} \\partial_{\\epsilon}{\\lambda_{0}} \\partial_{t}{A} e^{a k} e^{c}\\,_{i} e^{f}\\,_{k}+\\dot{z}\\,^{a} \\partial_{U \\epsilon t}{A}-R_{b c d f} X^{i} X^{j} \\dot{z}\\,^{a} \\dot{z}\\,^{b} \\partial_{U}{A} \\partial_{\\epsilon}{\\lambda_{0}} \\partial_{t}{\\lambda_{0}} e^{c}\\,_{i} e^{d}\\,_{j} n^{f}+R_{b c d f} X^{i} X^{j} \\dot{z}\\,^{b} \\dot{z}\\,^{d} \\partial_{U}{A} \\partial_{\\epsilon}{\\lambda_{0}} \\partial_{t}{\\lambda_{0}} e^{c}\\,_{i} e^{f}\\,_{j} n^{a}+R_{b c d f} X^{i} X^{j} \\dot{z}\\,^{b} \\partial_{U}{A} \\partial_{\\epsilon}{\\lambda_{0}} \\partial_{t}{\\lambda_{0}} e^{a k} e^{c}\\,_{i} e^{d}\\,_{j} e^{f}\\,_{k}+\\partial_{t}{\\lambda_{0}} \\partial_{U \\epsilon}{X^{i}} e^{a}\\,_{i}+\\partial_{U}{X^{i}} \\partial_{\\epsilon t}{\\lambda_{0}} e^{a}\\,_{i}+\\partial_{\\epsilon}{\\lambda_{0}} \\partial_{U t}{X^{i}} e^{a}\\,_{i}+2\\partial_{U}{V} \\partial_{\\epsilon}{\\lambda_{0}} \\partial_{t}{\\lambda_{0}} n^{a}\\end{dmath*}"
+				}
+			],
+			"source": "DepsUtSig := R^{a}_{b c d} \\dot{z}^b e^{c}_{i} \\dot{z}^d X^{i} \\partial_{U}{A} \\partial_{t}{A} \n\\partial_{\\epsilon}{\\lambda_0} + \\dot{z}^a \\partial_{\\epsilon U t}{A} + R^{a}_{b c d} e^{b}_{i} e^{c}_{j} \\dot{z}^d X^{i} \nX^{j} \\partial_{U}{A} \\partial_{\\epsilon}{\\lambda_0} \\partial_{t}{\\lambda_0} + e^{a}_{i} ( \\partial_{\\epsilon U}{X^i}\n\\partial_{t}{\\lambda_0} + \\partial_{U}{X^i} \\partial_{\\epsilon t}{\\lambda_0} + \\partial_{U t}{X^i} \n\\partial_{\\epsilon}{\\lambda_0} ) + 2 n^a \\partial_{\\epsilon}{\\lambda_0} \\partial_{t}{\\lambda_0} \\partial_{U}{V};\nsubstitute(_, $R^{a}_{b c d} -> R_{f b c d} g^{a f}$);\nsubstitute(_, $g^{a f} -> - \\dot{z}^a n^f - n^a \\dot{z}^f + e^{a}_{k} e^{f k}$);\ndistribute(DepsUtSig);"
+		},
+		{
+			"cell_id": 5148576475578041532,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 889066360265027306,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 6316739397223889778,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\dot(z)^{a} k + X^{i} e^{a}_{i} + R_{b c d f} X^{i} X^{j} \\dot(z)^{a} \\dot(z)^{b} e^{c}_{i} e^{d}_{j} n^{f}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\dot{z}\\,^{a} k+X^{i} e^{a}\\,_{i}+R_{b c d f} X^{i} X^{j} \\dot{z}\\,^{a} \\dot{z}\\,^{b} e^{c}\\,_{i} e^{d}\\,_{j} n^{f}\\end{dmath*}"
+				},
+				{
+					"cell_id": 14089412407195025682,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 15367743109950857006,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\dot(z)^{a} k + X^{i} e^{a}_{i} + R_{b c d f} X^{i} X^{j} \\dot(z)^{a} \\dot(z)^{b} e^{c}_{i} e^{d}_{j} n^{f}"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\dot{z}\\,^{a} k+X^{i} e^{a}\\,_{i}+R_{b c d f} X^{i} X^{j} \\dot{z}\\,^{a} \\dot{z}\\,^{b} e^{c}\\,_{i} e^{d}\\,_{j} n^{f}\\end{dmath*}"
+				}
+			],
+			"source": "t1 := \\dot{z}^a k + e^{a}_{i} X^i + \\dot{z}^a R_{f b c d} n^f e^{b}_{i} e^{c}_{j} \\dot{z}^d X^i X^j;\nfactor_in(_, $k, R_{f b c d} n^f e^{b}_{i} e^{c}_{j} \\dot{z}^d X^i X^j$);"
+		},
+		{
+			"cell_id": 2774205086635843466,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 13051550670758965037,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 17229292890666584258,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "T^{a} + N^{a} b + T^{a} \\dot(z)_{c} \\dot(z)^{c}"
+						}
+					],
+					"source": "\\begin{dmath*}{}T^{a}+N^{a} b+T^{a} \\dot{z}\\,_{c} \\dot{z}\\,^{c}\\end{dmath*}"
+				},
+				{
+					"cell_id": 15526964976036517867,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 14018242384468393231,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "T^{a} + N^{a} b + T^{a} \\dot(z)_{c} \\dot(z)^{c}"
+						}
+					],
+					"source": "\\begin{dmath*}{}T^{a}+N^{a} b+T^{a} \\dot{z}\\,_{c} \\dot{z}\\,^{c}\\end{dmath*}"
+				}
+			],
+			"source": "ex := T^{a} + b N^{a} + \\dot{z}^c \\dot{z}_c T^{a};\nmeld(_);"
+		},
+		{
+			"cell_id": 5936638802460959944,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"source": ""
+		}
+	],
+	"description": "Cadabra JSON notebook format",
+	"version": 1.0
+}
